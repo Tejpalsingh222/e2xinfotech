@@ -16,9 +16,9 @@ Coded by www.creative-tim.com
 // @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import Icon from "@mui/material/Icon";
+// import Icon from "@mui/material/Icon";
 
-import bgImage from "assets/images/bg-coworking.jpeg";
+// import bgImage from "assets/images/bg-coworking.jpeg";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
@@ -76,7 +76,6 @@ function BuiltByDevelopers() {
         </Grid>
           {/* ))} */}
       </Container>
-      
     </MKBox>
      ))}
      </>

@@ -9,7 +9,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 
 // Material Kit 2 React themes
 import theme from "assets/theme";
-import Presentation from "layouts/pages/presentation";
+
 import routes from "./routes";
 import Home from "frantend/landingpage/Home"
 import Dashboard from "admin/pages/home/Dashboard";
@@ -77,7 +77,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Routes>
-        <Route path="/main-page" element={<Home />} />
+        <Route path="/main-page" element={<Home title="home"/>} />
         {/* <Route path="/dashboard" element={<Navigate to="/dashboard/login"/>}/> */}
         {/* route for home page header design */}
         <Route path="/dashboard/home_header_page_list" element={<HOME_HEADER_LIST_PAGE/>}/>

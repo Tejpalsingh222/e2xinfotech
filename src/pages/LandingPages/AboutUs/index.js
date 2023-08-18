@@ -39,8 +39,27 @@ import footerRoutes from "footer.routes";
 
 // Images
 import bgImage from "assets/images/banner5.jpg";
+import { useState, useEffect } from 'react'
+const img = 'http://localhost:5000/uploads/'
+function AboutUs(props) {
+    //  alert(props.title)
+  const [getdata, setData] = useState('')
 
-function AboutUs() {
+  const fetchdatawithapi = () => {
+    fetch(`http://localhost:5000/get_home_page_config/${props.title}`)
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        console.log('ch',data.data);
+        setData(data.data)
+      })
+  }
+  useEffect(() => {
+    fetchdatawithapi()
+  }, [])
+
+
   return (
     <>
       <DefaultNavbar
@@ -53,6 +72,8 @@ function AboutUs() {
         // }}
        sticky
       />
+       {getdata &&
+        getdata.map(user => (
       <MKBox
         minHeight="75vh"
         width="100%"
@@ -61,7 +82,7 @@ function AboutUs() {
             `${linearGradient(
               rgba(gradients.dark.main, 0.6),
               rgba(gradients.dark.state, 0.6)
-            )}, url(${bgImage})`,
+            )}, url(${img + user.image})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "grid",
@@ -89,7 +110,7 @@ function AboutUs() {
                 },
               })}
             >
-              ABOUT-US..
+              {user.title}
             </MKTypography>
             <MKTypography
               variant="h4"
@@ -100,10 +121,10 @@ function AboutUs() {
                 },
               })}
             >
-              Work with an E2X INFOTECH PVT LTD
+              {user.title}
             </MKTypography>
             <MKTypography variant="h5" color="black" opacity={0.8} mt={1} mb={3}>
-            . E2X Infotech provides a range of web designing and development services to organizations across the world. 
+            {user.description}
             </MKTypography>
             {/* <MKButton color="default" sx={{ color: ({ palette: { dark } }) => dark.main }}>
               create account
@@ -128,6 +149,7 @@ function AboutUs() {
           </Grid>
         </Container>
       </MKBox>
+       ))}
       <Card
         sx={{
           p: 2,

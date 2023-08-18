@@ -12,12 +12,7 @@ class Expertise_edit extends Component {
 
 
   constructor(props) {
-
-
-
-
-    super(props);
-
+ super(props);
     this.state = {
       selectedFile: null, // to store selected file
       handleResponse: null, // handle the API response
@@ -27,11 +22,8 @@ class Expertise_edit extends Component {
 
     };
   }
-
-  
   componentDidMount() {
-    const carousel_id = window.location.href.split('/')[5]
-    
+    const carousel_id = window.location.href.split('/')[5] 
     fetch(`http://localhost:5000/edit-expertise/${carousel_id}`)
       .then(response => response.json()).then(json => json.data)
       .then(data => {
@@ -39,9 +31,6 @@ class Expertise_edit extends Component {
         this.setState({ books: data });
       });
   }
-
-
-
   handleInputChangedHeading(event) {
     this.setState({
       heading: event.target.value
@@ -52,19 +41,11 @@ class Expertise_edit extends Component {
       paragraph: event.target.value
     });
   }
- 
-
   onChangeFile = event => {
     this.setState({
       selectedFile: event.target.files[0]
     });
   };
-
-  // handle change event of input file
-
-
-
-
   // handle click event of the upload button
   handleUpload = (e) => {
     const { selectedFile, heading, paragraph } = this.state;
@@ -79,13 +60,10 @@ class Expertise_edit extends Component {
       });
       return false;
     }
-
     const formData = new FormData();
-
     formData.append('expert_image', selectedFile, selectedFile.name);
     formData.append('heading', heading);
     formData.append('paragraph', paragraph);
-
     const id = window.location.href.split('/')[5]
     var object = {};
     formData.forEach(function (value, key) {

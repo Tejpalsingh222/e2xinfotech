@@ -85,11 +85,12 @@ app.post('/login',(request,response)=>{
 });
 
 // Home_Page_config api.........
-app.get('/get_home_page_config', function(req, res, next) {
+app.get('/get_home_page_config/:page_id', function(req, res, next) {
+     
       
-    var sql ="SELECT * FROM `home_page_config`";
+    var sql ="SELECT * FROM `home_page_config` where pagelink=? ";
    
-    db.query(sql, function (err, data) {
+    db.query(sql,[req.params.page_id], function (err, data) {
     if (err) throw err;
     console.log(data.affectedRows + " record(s) selected");
    
@@ -579,6 +580,36 @@ app.get('/edit-pdd/:id', function(req, res, next) {
         return res.send({ message: 'File&Data is Insert successfully.', result });
      });
  });
+
+
+
+  //*************########### about_company_information###########********** */
+app.get('/get_about_company_info', function(req, res, next) {
+      
+      var sql ="SELECT * FROM `about_company_info` where status=1";
+     
+      db.query(sql, function (err, data) {
+      if (err) throw err;
+      console.log(data.affectedRows + " record(s) selected");
+      
+     
+      return res.send({ message: 'success', data:data });
+    });
+  });
+
+  app.get('/get_about_company_info_o', function(req, res, next) {
+      
+    var sql ="SELECT * FROM `about_company_info` where status=0";
+   
+    db.query(sql, function (err, data) {
+    if (err) throw err;
+    console.log(data.affectedRows + " record(s) selected");
+   
+    return res.send({ message: 'success', data:data });
+  });
+});
+
+
 app.listen(port, () => {
   console.log('Server started on: ' + port);
 });

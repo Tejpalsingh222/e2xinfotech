@@ -10,14 +10,8 @@ const BASE_URL = 'http://localhost:5000/pdd_update/';
 
 class Pdd_edit extends Component {
 
-
   constructor(props) {
-
-
-
-
     super(props);
-
     this.state = {
       
       pdd_image: null, // handle the API response
@@ -37,10 +31,6 @@ class Pdd_edit extends Component {
         this.setState({ service: data });
       });
   }
-
-
-
-
   handleInputChangedHeading(event) {
     this.setState({
       pdd_heading: event.target.value
@@ -61,9 +51,6 @@ class Pdd_edit extends Component {
 
   // handle change event of input file
 
-
-
-
   // handle click event of the upload button
   handleUpload = (e) => {
     const { pdd_image, pdd_heading, pdd_paragraph } = this.state;
@@ -83,7 +70,6 @@ class Pdd_edit extends Component {
       object[key] = value;
     });
     var json = JSON.stringify(object);
-
 
     axios({
       method: "post",
@@ -106,23 +92,15 @@ class Pdd_edit extends Component {
 
   }
   render() {
-
-
-
-
     const title = this.props;
     const { handleResponse, imageUrl } = this.state;
     const chec = this;
     return (
-
       <div className="new">
         <Sidebar />
-
         <div className="newContainer">
           <Navbar />
-
           <div className="top">
-
             <h1>{title.title}</h1>
           </div>
           {this.state.service && this.state.service.map((user, index) => (
@@ -131,7 +109,6 @@ class Pdd_edit extends Component {
                 <img src={'http://localhost:5000/uploads/${item.carousel_image}'}></img>
               </div>
               <div className="right">
-
                 <form >
                   {/* <div className="formInput">
                     <label htmlFor="file">

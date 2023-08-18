@@ -93,7 +93,7 @@ function MKmsg() {
                       InputLabelProps={{ shrink: true }}
                       multiline
                       fullWidth
-                      rows={6}
+                      rows={4}
                     />
                   </Grid>
                 </Grid>

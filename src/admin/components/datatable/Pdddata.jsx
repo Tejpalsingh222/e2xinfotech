@@ -36,13 +36,9 @@ const Pdddata = () => {
   }).catch((e)=>{
     alert("error");
     console.log('e',e);
-
   });
-    
   };
- 
   const updateButton = (id) => {
-
     // http://localhost:5000/delete/47
     const responseDel = fetch(`http://localhost:5000/delete/`, {
       method: "get",
@@ -52,9 +48,7 @@ const Pdddata = () => {
   const handleEdit = (id) => {
     navigate("/dashboard/home_pdd_edit/" + id);
   }
-
-
-  const actionColumn = [
+ const actionColumn = [
     {
       field: "action",
       headerName: "Action",
@@ -105,5 +99,4 @@ const Pdddata = () => {
     </div>
   );
 };
-
 export default Pdddata;

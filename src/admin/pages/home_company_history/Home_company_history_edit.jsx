@@ -58,14 +58,6 @@ class Home_company_history_edit extends Component {
       home_counter: event.target.value
     });
   }
-
-
-
-  // handle change event of input file
-
-
-
-
   // handle click event of the upload button
   handleUpload = (e) => {
     const { title, description, home_counter } = this.state;

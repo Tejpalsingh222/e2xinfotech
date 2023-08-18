@@ -19,8 +19,7 @@ export const userColumns = [
         renderCell: (params) => {
           return (
             <div className="cellWithImg">
-              <img className="cellImg" src='' alt="avatar" />
-              
+              <img className="cellImg" src='' alt="avatar"/>
             </div>
           );
         },
@@ -39,9 +38,6 @@ export const userColumns = [
       },
     },
   ];
-  
-  
-  //temporary data
   
    
 

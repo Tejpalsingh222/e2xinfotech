@@ -2,12 +2,12 @@
 import ReactCardSlider from "react-card-slider-component";
 import React, {useEffect, useState } from "react";
 import "./carousel.scss";
-import team1 from "assets/images/Ronald.jpg";
-import team2 from "assets/images/Mourad.jpg";
-import team3 from "assets/images/Torre.jpg";
-import team4 from "assets/images/Hayden.jpg";
-import team5 from "assets/images/kylie.jpg";
-import team6 from "assets/images/json.jpg";
+// import team1 from "assets/images/Ronald.jpg";
+// import team2 from "assets/images/Mourad.jpg";
+// import team3 from "assets/images/Torre.jpg";
+// import team4 from "assets/images/Hayden.jpg";
+// import team5 from "assets/images/kylie.jpg";
+// import team6 from "assets/images/json.jpg";
 
 
 function Carousel() {
@@ -20,7 +20,6 @@ function Carousel() {
         setData(data)
       })
   }
-
   useEffect(() => {
     fetchUserData()
   }, [])

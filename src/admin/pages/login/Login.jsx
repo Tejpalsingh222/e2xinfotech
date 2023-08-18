@@ -27,7 +27,7 @@ import MuiLink from "@mui/material/Link";
 import { Link } from "react-router-dom";
 
 // Authentication layout components
-import BasicLayout from '../../../layouts/pages/authentication/sign-in/index';
+
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 const Login = (props) => {
