@@ -50,18 +50,14 @@ handleUpload = (e) => {
   const { selectedFile ,heading ,paragraph  } = this.state;
   console.log(this.state);
   e.preventDefault();
-  if (!selectedFile) {
-    this.setState({
-      handleResponse: {
-        isSuccess: false,
-        message: "Please select image to upload."
-      }
-    });
-    return false;
-  }
   const formData = new FormData();
- 
-  formData.append('expert_image', selectedFile, selectedFile.name);
+  console.log("formData======>", formData);
+  if (selectedFile) {
+    if (selectedFile.name) {
+      formData.append('expert_image',selectedFile,selectedFile.name);
+    }    
+  } 
+
   formData.append('heading', heading);
   formData.append('paragraph', paragraph);
 
@@ -95,9 +91,7 @@ render(){
         <h1>{title.title}</h1>
       </div>
       <div className="bottom">
-        <div className="left">
-          <img ></img>
-         </div>
+       
         <div className="right">
           <form>
           <div className="formInput">
@@ -123,7 +117,7 @@ render(){
               <input hidden type="text"  />
             </div>
             
-            <button value="button" onClick={this.handleUpload} style={{margin:'auto',height:'50px'}}>upload </button>
+            <button value="button" onClick={this.handleUpload} style={{margin:'auto',height:'50px'}}>Upload </button>
             {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
           </form>
         </div>

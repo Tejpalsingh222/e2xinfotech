@@ -1,19 +1,4 @@
-/*
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 
@@ -24,13 +9,69 @@ import MKTypography from "components/MKTypography";
 // Material Kit 2 React examples
 import HorizontalTeamCard from "examples/Cards/TeamCards/HorizontalTeamCard";
 
-// Images
-import team1 from "assets/images/team-5.jpg";
-import team2 from "assets/images/bruce-mars.jpg";
-import team3 from "assets/images/ivana-squares.jpg";
-import team4 from "assets/images/ivana-square.jpg";
 
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
+import { useState, useEffect } from 'react'
+const img = 'http://localhost:5000/uploads/'
 function Team() {
+  const [getdata, setData] = useState('')
+
+  const fetchdatawithapi = () => {
+    fetch(`http://localhost:5000/executive_team`)
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        console.log('sssssssssssssssssssssss',data.data);
+        setData(data.data)
+      })
+  }
+  useEffect(() => {
+    fetchdatawithapi()
+  }, [])
+
+  const page_name='About-team';
+  const [Information, setUsers] = useState([])
+  const [serviceheading,setOurServiceHeading]=useState([])
+
+const fetchSuperHeading=()=>{
+  fetch(`http://localhost:5000/super-heading/${page_name}`)
+  .then(response=>response.json())
+  .then(json=>json.data)
+  .then(data=>{
+      console.log('superhead',data)
+      setOurServiceHeading(data[0])
+      
+  })
+ 
+}
+useEffect(()=>{
+  fetchSuperHeading()
+},[])
+
+
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5
+  },
+  desktop: {
+    breakpoint: { max: 2000, min: 1024 },
+    items: 2
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1
+  }
+};
+
   return (
     <MKBox
       component="section"
@@ -45,56 +86,31 @@ function Team() {
         <Grid container>
           <Grid item xs={12} md={8} sx={{ mb: 6 }}>
             <MKTypography variant="h3" color="white">
-              The Executive Team of E2X INFOTECH
+            {serviceheading.page_heading}
             </MKTypography>
             <MKTypography variant="body2" color="white" opacity={0.8}>
-            It is clear when an executive team works well together. They embrace the same leadership expectations. 
-            The team comes together in complete alignment toward the company’s mission, vision, purpose and goals. 
+            {serviceheading.page_paragraph}
             </MKTypography>
           </Grid>
         </Grid>
-        <Grid container spacing={3}>
-          <Grid item xs={12} lg={6}>
+        
+        <Carousel showDots={true} responsive={responsive} itemAriaLabel='dineideindie'>
+        {getdata && getdata.map(user => (
+            <Grid container spacing={3}>
+          <Grid item xs={12} lg={15}>
             <MKBox mb={1}>
               <HorizontalTeamCard
-                image={team1}
-                name="Emma Roberts"
-                position={{ color: "info", label: "UI Designer" }}
-                description="Artist is a term applied to a person who engages in an activity deemed to be an art."
-              />
-            </MKBox>
-          </Grid>
-          <Grid item xs={12} lg={6}>
-            <MKBox mb={1}>
-              <HorizontalTeamCard
-                image={team2}
-                name="William Pearce"
-                position={{ color: "info", label: "Boss" }}
-                description="Artist is a term applied to a person who engages in an activity deemed to be an art."
-              />
-            </MKBox>
-          </Grid>
-          <Grid item xs={12} lg={6}>
-            <MKBox mb={{ xs: 1, lg: 0 }}>
-              <HorizontalTeamCard
-                image={team3}
-                name="Ivana Flow"
-                position={{ color: "info", label: "Athlete" }}
-                description="Artist is a term applied to a person who engages in an activity deemed to be an art."
-              />
-            </MKBox>
-          </Grid>
-          <Grid item xs={12} lg={6}>
-            <MKBox mb={{ xs: 1, lg: 0 }}>
-              <HorizontalTeamCard
-                image={team4}
-                name="Marquez Garcia"
-                position={{ color: "info", label: "JS Developer" }}
-                description="Artist is a term applied to a person who engages in an activity deemed to be an art."
+                image={img + user.team_image}
+                name={user.excutive_title}
+                position={{ color: "info", label:`${user.team_position}` }}
+                description={user.excutive_intro}
               />
             </MKBox>
           </Grid>
         </Grid>
+
+          ))}
+            </Carousel>
       </Container>
     </MKBox>
   );

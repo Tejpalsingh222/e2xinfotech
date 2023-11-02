@@ -1,25 +1,10 @@
-/* eslint-disable no-param-reassign */
-/**
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
+import AppBar from '@mui/material/AppBar';
 import { Fragment, useState, useEffect } from "react";
 
-// react-router components
+
 import { Link } from "react-router-dom";
 
-// prop-types is a library for typechecking of props.
+
 import PropTypes from "prop-types";
 
 // @mui material components
@@ -36,13 +21,15 @@ import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 import MKButton from "components/MKButton";
 
+
+
 // Material Kit 2 React example components
 import DefaultNavbarDropdown from "examples/Navbars/DefaultNavbar/DefaultNavbarDropdown";
 import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMobile";
-
-// Material Kit 2 React base styles
+// React base styles
 import breakpoints from "assets/theme/base/breakpoints";
 
+const img = 'http://localhost:5000/uploads/about_image-1684327934299.png';
 function DefaultNavbar({ brand, routes, transparent, light, action, sticky, relative, center }) {
   const [dropdown, setDropdown] = useState("");
   const [dropdownEl, setDropdownEl] = useState("");
@@ -57,7 +44,6 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
   const openMobileNavbar = () => setMobileNavbar(!mobileNavbar);
 
   useEffect(() => {
-    // A function that sets the display state for the DefaultNavbarMobile.
     function displayMobileNavbar() {
       if (window.innerWidth < breakpoints.values.lg) {
         setMobileView(true);
@@ -68,16 +54,12 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
       }
     }
 
-    /** 
-     The event listener that's calling the displayMobileNavbar function when 
-     resizing the window.
-    */
+    
     window.addEventListener("resize", displayMobileNavbar);
 
-    // Call the displayMobileNavbar function to set the state with the initial value.
     displayMobileNavbar();
 
-    // Remove event listener on cleanup
+
     return () => window.removeEventListener("resize", displayMobileNavbar);
   }, []);
 
@@ -487,7 +469,9 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
             mr={center ? "auto" : 0}
           >
             {renderNavbarItems}
+        
           </MKBox>
+   
           <MKBox ml={{ xs: "auto", lg: 0 }}>
             {action &&
               (action.type === "internal" ? (
@@ -551,7 +535,7 @@ function DefaultNavbar({ brand, routes, transparent, light, action, sticky, rela
 
 // Setting default values for the props of DefaultNavbar
 DefaultNavbar.defaultProps = {
-  brand: "E2x Infotech",
+  brand:<img src={img} alt="logo" style={{width:'250px'}}/>,
   transparent: false,
   light: false,
   action: false,
@@ -560,6 +544,7 @@ DefaultNavbar.defaultProps = {
   center: false,
 };
 
+   
 // Typechecking props for the DefaultNavbar
 DefaultNavbar.propTypes = {
   brand: PropTypes.string,
@@ -586,9 +571,12 @@ DefaultNavbar.propTypes = {
       label: PropTypes.string.isRequired,
     }),
   ]),
+  
   sticky: PropTypes.bool,
   relative: PropTypes.bool,
   center: PropTypes.bool,
 };
+
+
 
 export default DefaultNavbar;

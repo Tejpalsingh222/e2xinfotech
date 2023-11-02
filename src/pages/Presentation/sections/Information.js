@@ -1,19 +1,3 @@
-/*
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 
@@ -63,14 +47,14 @@ fetchCompanyHisotry1();
 },[]);
 console.log('checktejpal',cardinfo);
   return (
-    <MKBox component="section" ml={-48} py={4} my={4}>
+    <MKBox component="section" py={6} my={6}>
       <Container>
-       <Grid container item xs={11} spacing={25} alignItems="center" sx={{ mx: "auto" }}>
-          <Grid item xs={14} lg={5} sx={{ mx: "auto" }}  >
+        <Grid container item xs={11} spacing={3} alignItems="center"  sx={{ mx: "auto" ,ml:"-12"}}>
+          <Grid item xs={12} lg={4} sx={{ mx: "auto" }}>
             <RotatingCard>
               <RotatingCardFront
-                image={bgFront}
-                icon={cardinfo.icons}
+                 image={bgFront}
+                 icon={cardinfo.icons}
                 title={
                   <>
                    {cardinfo.title}
@@ -79,34 +63,31 @@ console.log('checktejpal',cardinfo);
                 description={cardinfo.description}
               />
               <RotatingCardBack
-                image={bgBack}
-                title={cardinfo1.title}
-                description={cardinfo.description}
-                // action={{
-                //   type: "internal",
-                //   // route: "/sections/page-sections/page-headers",
-                //   label: "start with header",
-                // }}
+                 image={bgBack}
+                 title={cardinfo1.title}
+                 description={cardinfo.description} 
               />
-              </RotatingCard>
-            
+            </RotatingCard>
           </Grid>
-          <Grid item xs={3} lg={7} sx={{ ml: "auto" }}> 
-            <Grid container spacing={3}>
-            { GetcompInfo && GetcompInfo.map((user)=>(
-              <Grid item xs={10} md={6}>
+        
+          <Grid item xs={12} lg={8} sx={{ ml:-1 }} >
+         <Grid container spacing={3} >
+            {GetcompInfo && GetcompInfo.map(user => (
+              <Grid item xs={12} md={6} >
                 <DefaultInfoCard
                   icon={user.icons}
-                  title={user.title}
-                  description={user.description}
+                  title= {user.title}
+                  description= {user.description}
                 />
               </Grid>
-               ))}
-            </Grid>
-          </Grid> 
+                ))}
+              </Grid>
+              </Grid>
         </Grid>
       </Container>
     </MKBox>
   );
 }
 export default Information;
+
+

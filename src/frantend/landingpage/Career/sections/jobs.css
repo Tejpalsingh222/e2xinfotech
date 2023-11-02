@@ -1,0 +1,52 @@
+.react-multiple-carousel__arrow--right {
+    right: calc(4% + 1px);
+    height: 10px;
+    width: 15px;
+}
+
+.react-multiple-carousel__arrow--left {
+    left: calc(4% + 1px);
+    height: 10px;
+    width: 15px;
+}
+
+.css-1f169pn {
+    width: 90%;
+}
+
+.css-15d3doy {
+    /* width: 90%; */
+    margin-left: 89px;
+    margin-right: 88px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    opacity: 1;
+    background: transparent;
+    color: #344767;
+    border-radius: none;
+    box-shadow: none;
+    
+  
+}
+.multi-coloum {
+    
+    transform-style: preserve-3d;
+    backface-visibility: visible;
+    border-left: 4px solid blue;
+    border-right: 4px solid blue;
+    height: 150px;
+    border-radius: 5%;
+    /* margin-left: 10px; */
+    text-align:inherit;
+    /* padding:30px 50px; */
+    padding-left: 65px;
+   
+
+
+}
+
+.css-bq11r7 {
+    margin-left: 90px;
+    margin-right: 90px;
+}
+

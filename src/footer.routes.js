@@ -14,9 +14,9 @@ const date = new Date().getFullYear();
 
 export default {
   brand: {
-    name: "E2X Infotech",
+    name: "E2X Infotech Pvt Ltd",
     image: logoCT,
-    route: "/",
+    // route: "/",
   },
   socials: [
     {
@@ -41,48 +41,19 @@ export default {
       name: "company",
       items: [
         { name: "about us", route: "/pages/landing-pages/about-us", },
-        // href: "https://www.creative-tim.com/presentation"
-        { name: "freebies" },
-        // , href: "https://www.creative-tim.com/templates/free"
-        { name: "premium tools" },
-        // , href: "https://www.creative-tim.com/templates/premium"
-        { name: "blog" },
-        // , href: "https://www.creative-tim.com/blog"
-      ],
-    },
-    {
-      name: "resources",
-      items: [
-        { name: "illustrations" },
-        // , href: "https://iradesign.io/"
-        { name: "bits & snippets"},
-        // , href: "https://www.creative-tim.com/bits" 
-        { name: "affiliate program"},
-        // , href: "https://www.creative-tim.com/affiliates/new" 
+        { name: "blog",route:"/pages/landing-pages/author", },
       ],
     },
     {
       name: "help & support",
       items: [
-        { name: "contact us"},
-        // , href: "https://www.creative-tim.com/affiliates/new"
-        { name: "knowledge center"},
-        // , href: "https://www.creative-tim.com/knowledge-center" 
-        { name: "custom development"},
-        // , href: "https://services.creative-tim.com/" 
-        { name: "sponsorships" },
-        // , href: "https://services.creative-tim.com/" 
+        { name: "contact us",route:"/pages/landing-pages/contact-us"},
       ],
-    },
+    } ,
     {
-      name: "legal",
+      name: "company",
       items: [
-        { name: "terms & conditions" },
-        // href: "https://www.creative-tim.com/terms"
-        { name: "privacy policy"},
-        // , href: "https://www.creative-tim.com/privacy" 
-        { name: "licenses (EULA)"},
-        // , href: "https://www.creative-tim.com/license" 
+        { name: "Home", route: "/pages/landing-pages/main-page", },
       ],
     },
   ],
@@ -91,7 +62,7 @@ export default {
       All rights reserved. Copyright &copy; {date} E2X INFOTECH{" "}
       <MKTypography
         component='a'
-        href='https://www.creative-tim.com'
+        // href='https://www.creative-tim.com'
         target='_blank'
         rel='noreferrer'
         variant='button'
@@ -99,7 +70,6 @@ export default {
       >
         {/* Creative Tim */}
       </MKTypography>
-      .
     </MKTypography>
   ),
 };

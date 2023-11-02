@@ -50,18 +50,15 @@ handleUpload = (e) => {
   const { selectedFile ,title ,description  } = this.state;
   console.log(this.state);
   e.preventDefault();
-  if (!selectedFile) {
-    this.setState({
-      handleResponse: {
-        isSuccess: false,
-        message: "Please select image to upload."
-      }
-    });
-    return false;
-  }
+
   const formData = new FormData();
+  console.log("formData======>", formData);
+  if (selectedFile) {
+    if (selectedFile.name) {
+      formData.append('card_image',selectedFile,selectedFile.name);
+    }    
+  } 
  
-  formData.append('card_image', selectedFile, selectedFile.name);
   formData.append('title', title);
   formData.append('description', description);
 
@@ -95,9 +92,7 @@ render(){
         <h1>{title.title}</h1>
       </div>
       <div className="bottom">
-        <div className="left">
-          <img ></img>
-         </div>
+       
         <div className="right">
           <form>
           <div className="formInput">

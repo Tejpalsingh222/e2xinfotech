@@ -1,19 +1,4 @@
-/*
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
+import { Height } from "@mui/icons-material";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
@@ -22,10 +7,23 @@ import Stack from "@mui/material/Stack";
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
+import { useState,useEffect } from "react";
 
 function Footer() {
+
+  const [getdata,setData]=useState('');
+  const fetchUserData = () => {
+    fetch("http://localhost:5000/get_social_media/")
+      .then(response => response.json()).then(json => json.data)
+      .then(data => {
+        setData(data)
+      })
+  }
+  useEffect(() => {
+    fetchUserData()
+  }, [])
   return (
-    <MKBox component="footer" py={6}>
+<MKBox component="footer" py={6}>
       <Container>
         <Grid container>
           <Grid
@@ -36,9 +34,36 @@ function Footer() {
             mr="auto"
             mb={{ xs: 3, lg: 0 }}
           >
-            <MKTypography variant="h6" textTransform="uppercase" mb={{ xs: 2, lg: 3 }}>
-              E2X INFOTECH
-            </MKTypography>
+            <section id="topbar">
+
+<div className="container">
+
+    <div className="row">
+
+        <div className="col-lg-12 ">
+
+            <div className="contact-info pull-left">
+
+                <ul>
+
+                    <h5><b>Mon - Fri : 9:30 AM - 7:00 PM ,Sat - Sun:Closed</b></h5>
+                   
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+          <MKBox ml={-1}><img height={60} width={280} src="http://localhost:5000/uploads/about_image-1684327934299.png" alt="logo" >
+            </img></MKBox>
+            <ul>
+<h5><b>Company Established Year 2010</b></h5>
+
+</ul>
             <Stack
               component="ul"
               direction="row"
@@ -82,82 +107,43 @@ function Footer() {
                   fontWeight="regular"
                   opacity={0.8}
                   component={Link}
-                  href="http://localhost:3000/pages/landing-pages/author"
+                  href="/pages/landing-pages/contact-us"
                   target="_blank"
                   rel="noreferrer"
+                  
                 >
-                  Blog
+                  Contact
                 </MKTypography>
               </MKBox>
-              {/* <MKBox component="li">
+              <MKBox component="li">
                 <MKTypography
                   variant="button"
                   fontWeight="regular"
                   opacity={0.8}
                   component={Link}
-                  href="https://www.creative-tim.com"
+                  href="http://localhost:3000/pages/landing-pages/author"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Services
+                   Blog
                 </MKTypography>
-              </MKBox> */}
+              </MKBox>
             </Stack>
             <MKTypography variant="button" opacity={0.8}>
-            Developed By: E2X INFOTECH Pvt. Ltd
+            Developed By: E2X INFOTECH Pvt. Ltd 
             </MKTypography>
           </Grid>
           <Grid item xs={12} lg={6} ml="auto" textAlign={{ xs: "center", lg: "right" }}>
             <MKTypography variant="body1" fontWeight="bold" mb={6} sx={{ fontSize: "1.125rem" }}>
             E2X Infotech is a core technology company. We believe in innovating. We develop all kinds of websites - corporate websites
             </MKTypography>
-            <MKTypography
-              component={Link}
-              // href="#dribbble"
-              target="_blank"
-              rel="noreferrer"
-              variant="body2"
-              color="dark"
-              opacity={0.5}
-              mr={3}
-            >
-              <i className="fab fa-dribbble" />
-            </MKTypography>
-            <MKTypography
-              component={Link}
-              // href="#twitter"
-              target="_blank"
-              rel="noreferrer"
-              variant="body2"
-              color="dark"
-              opacity={0.5}
-              mr={3}
-            >
-              <i className="fab fa-twitter" />
-            </MKTypography>
-            <MKTypography
-              component={Link}
-              // href="#pinterest"
-              target="_blank"
-              rel="noreferrer"
-              variant="body2"
-              color="dark"
-              opacity={0.5}
-              mr={3}
-            >
-              <i className="fab fa-pinterest" />
-            </MKTypography>
-            <MKTypography
-              component={Link}
-              // href="#github"
-              target="_blank"
-              rel="noreferrer"
-              variant="body2"
-              color="dark"
-              opacity={0.5}
-            >
-              <i className="fab fa-github" />
-            </MKTypography>
+            <MKBox  display="flex" justifyContent="center"  alignItems="center">
+            {getdata && getdata.map((service)=>(
+              <MKTypography component="a" variant="h2" color="blue" href={service.link}  mr={3}  ml={5}>
+                <i className={service.icon} />
+              </MKTypography>
+              ))}
+            </MKBox>
           </Grid>
         </Grid>
       </Container>
@@ -166,3 +152,8 @@ function Footer() {
 }
 
 export default Footer;
+
+
+ 
+
+

@@ -50,18 +50,14 @@ handleUpload = (e) => {
   const { selectedFile ,service_title ,service_para  } = this.state;
   console.log(this.state);
   e.preventDefault();
-  if (!selectedFile) {
-    this.setState({
-      handleResponse: {
-        isSuccess: false,
-        message: "Please select image to upload."
-      }
-    });
-    return false;
-  }
-  const formData = new FormData();
- 
-  formData.append('service_image', selectedFile, selectedFile.name);
+
+   const formData = new FormData();
+  console.log("formData======>", formData);
+  if (selectedFile) {
+    if (selectedFile.name) {
+      formData.append('service_image',selectedFile,selectedFile.name);
+    }    
+  } 
   formData.append('service_title', service_title);
   formData.append('service_para', service_para);
 
@@ -95,9 +91,7 @@ render(){
         <h1>{title.title}</h1>
       </div>
       <div className="bottom">
-        <div className="left">
-          <img ></img>
-         </div>
+      
         <div className="right">
           <form>
           <div className="formInput">
@@ -113,12 +107,12 @@ render(){
               <input type="text" name="service_title" placeholder="carousel heading" onChange={this.handleInputChangedHeading.bind(this)} />
             </div>
             <div className="formInput" >
-              <label>Service paragraph</label>
+              <label>Service Paragraph</label>
                
               <input type="text" name="service_para" placeholder="carousel paragraph" onChange={this.handleInputChangedParagraph.bind(this)} />
             </div>
             
-            <button value="button" onClick={this.handleUpload} style={{margin:'auto',height:'50px'}}>upload </button>
+            <button value="button" onClick={this.handleUpload} style={{margin:'auto',height:'50px'}}>Upload </button>
             {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
           </form>
         </div>

@@ -1,11 +1,9 @@
 import React  from "react";
 
- 
-
 function Dashboard() {
     return(
         <div className="div">
-           <li>about us</li>
+           <li>About us</li>
         </div>
     );
     

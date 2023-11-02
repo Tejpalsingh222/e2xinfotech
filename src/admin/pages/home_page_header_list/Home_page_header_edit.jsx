@@ -30,13 +30,11 @@ class Home_page_header_edit extends Component {
       .then(response => response.json()).then(json => json.data)
       .then(data => {
         console.log('hii',data)
-        this.setState({ service: data });
+        this.setState({ title: data[0].title});
+        this.setState({ description: data[0].description });
+        this.setState({ selectedFile: data[0].image});
       });
   }
-
-
-
-
   handleInputChangedHeading(event) {
     this.setState({
       title: event.target.value
@@ -65,21 +63,18 @@ class Home_page_header_edit extends Component {
     const { selectedFile, title, description } = this.state;
     console.log(this.state);
     e.preventDefault();
-    if (!selectedFile) {
-      this.setState({
-        handleResponse: {
-          isSuccess: false,
-          message: "Please select image to upload."
-        }
-      });
-      return false;
-    }
+    
 
     const formData = new FormData();
-
-    formData.append('home_image', selectedFile, selectedFile.name);
+    console.log("formData======>", formData);
+    if (selectedFile) {
+      if (selectedFile.name) {
+        formData.append('home_image',selectedFile,selectedFile.name);
+      }    
+    }    
     formData.append('title', title);
     formData.append('description', description);
+ 
 
     const ser_id = window.location.href.split('/')[5]
     var object = {};
@@ -111,9 +106,9 @@ class Home_page_header_edit extends Component {
   }
   render() {
 
-    const title = this.props;
-    const { handleResponse, imageUrl } = this.state;
-    const chec = this;
+    const head = this.props;
+    const { handleResponse, selectedFile, title,description} = this.state;
+    console.log('hi ram ',selectedFile);
     return (
 
       <div className="new">
@@ -124,13 +119,10 @@ class Home_page_header_edit extends Component {
 
           <div className="top">
 
-            <h1>{title.title}</h1>
+            <h1>{head.title}</h1>
           </div>
-          {this.state.service && this.state.service.map((user, index) => (
+        
             <div className="bottom">
-              <div className="left">
-                <img src={'http://localhost:5000/uploads/${item.carousel_image}'}></img>
-              </div>
               <div className="right">
 
                 <form >
@@ -138,18 +130,18 @@ class Home_page_header_edit extends Component {
                     <label htmlFor="file">
                       Image : <DriveFolderUploadOutlined className="icon" />
                     </label>
-                    <input type="file" key={index} onChange={this.onChangeFile} />
+                    <input type="file" onChange={this.onChangeFile} />
                   </div>
 
                   <div className="formInput" >
                     <label>Title</label>
 
-                    <input type="text" key={index} name="title" defaultValue={user.title} placeholder="fill discription" onChange={this.handleInputChangedHeading.bind(this)} />
+                    <input type="text" name="title" defaultValue={title} placeholder="fill discription" onChange={this.handleInputChangedHeading.bind(this)} />
                   </div>
                   <div className="formInput" >
-                    <label>description</label>
+                    <label>Description</label>
 
-                    <input type="text" key={index} name="description" defaultValue={user.description} placeholder=" desc" onChange={this.handleInputChangedParagraph.bind(this)} />
+                    <input type="text" name="description" defaultValue={description} placeholder=" desc" onChange={this.handleInputChangedParagraph.bind(this)} />
                   </div>
 
                   <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}> Edit </button>
@@ -158,7 +150,7 @@ class Home_page_header_edit extends Component {
 
               </div>
             </div>
-          ))}
+  
         </div>
 
       </div>

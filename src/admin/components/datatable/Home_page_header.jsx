@@ -3,14 +3,13 @@ import { DataGrid } from "@mui/x-data-grid";
 import { userColumns } from "../../Home_page_header";
 import { useState,useEffect } from "react";
 import { Link,useNavigate} from 'react-router-dom';
-const Home_page_header = () => {
+const Home_page_header = (props) => {
   const [data, setData] = useState([])
   const [dedat, setRepos] = useState(null);
   const fetchUserData = () => {
-    fetch("http://localhost:5000/get_home_page_config")
+    fetch(`http://localhost:5000/getalpage`)
       .then(response => response.json()).then(json => json.data)
       .then(data => {
-        console.log(data)
         setData(data)
       })
   }
@@ -20,10 +19,10 @@ const Home_page_header = () => {
   }, [])
   const navigate = useNavigate();
   const handleDelete = (id) => {
-    // http://localhost:5000/delete/47
     const responseDel = fetch(`http://localhost:5000/delete-home_page_config/${id}`, {
       method: "get",
     }).then((response) => {
+      
       
       if(response.status==200)
       {
@@ -89,7 +88,7 @@ const Home_page_header = () => {
       <div className="datatableTitle">
         Show Home Details
         <Link to="/dashboard/home_header_page_add" className="link">
-          Add New Home details
+          Add New Home Details
         </Link>
       </div>
       <DataGrid
@@ -99,7 +98,7 @@ const Home_page_header = () => {
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
+        // checkboxSelection
       />
     </div>
   );

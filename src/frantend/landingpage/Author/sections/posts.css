@@ -1,0 +1,46 @@
+.react-multiple-carousel__arrow--right {
+    right: calc(4% + 1px);
+    height: 10px;
+    width: 15px;
+}
+
+.react-multiple-carousel__arrow--left {
+    left: calc(4% + 1px);
+    height: 10px;
+    width: 15px;
+}
+
+.css-1f169pn {
+    width: 90%;
+}
+
+.css-15d3doy {
+    /* width: 90%; */
+    margin-left: 89px;
+    margin-right: 88px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    opacity: 1;
+    background: transparent;
+    color: #344767;
+    border-radius: none;
+    box-shadow: none;
+}
+/* 
+.css-1f169pn {
+    width: 90%;
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+    background: transparent;
+    color: #344767;
+    border-radius: 0.5rem;
+    box-shadow: 0rem 0.25rem 0.375rem -0.0625rem rgba(0, 0, 0, 0
+    
+    .1), 0rem 0.125rem 0.25rem -0.0625rem rgba(0, 0, 0, 0.06);
+} */
+
+.css-bq11r7 {
+    margin-left: 90px;
+    margin-right: 90px;
+}

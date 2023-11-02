@@ -1,38 +1,34 @@
-/*
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import Divider from "@mui/material/Divider";
+// import Divider from "@mui/material/Divider";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
 
-// Material Kit 2 React examples
-import DefaultReviewCard from "examples/Cards/ReviewCards/DefaultReviewCard";
 
-// Images
-import appleLogo from "assets/images/logos/gray-logos/logo-apple.svg";
-import facebookLogo from "assets/images/logos/gray-logos/logo-facebook.svg";
-import nasaLogo from "assets/images/logos/gray-logos/logo-nasa.svg";
-import vodafoneLogo from "assets/images/logos/gray-logos/logo-vodafone.svg";
-import digitalOceanLogo from "assets/images/logos/gray-logos/logo-digitalocean.svg";
+import { useState,useEffect } from "react";
 
 function Information() {
+  const page_name='home';
+  const [Information, setUsers] = useState([])
+  const [serviceheading,setOurServiceHeading]=useState([])
+
+const fetchSuperHeading=()=>{
+  fetch(`http://localhost:5000/super-heading/${page_name}`)
+  .then(response=>response.json())
+  .then(json=>json.data)
+  .then(data=>{
+      console.log('superhead',data)
+      setOurServiceHeading(data[0])
+      
+  })
+ 
+}
+useEffect(()=>{
+  fetchSuperHeading()
+},[])
   return (
     <MKBox component="section" py={12}>
       <Container>
@@ -43,10 +39,10 @@ function Information() {
           lg={6}
           justifyContent="center"
           sx={{ mx: "auto", textAlign: "center" }}
-        >
-          <MKTypography variant="h2">Three Simple Steps</MKTypography>
+          >
+          <MKTypography variant="h2">{serviceheading.page_heading}</MKTypography>
           <MKTypography variant="h2" color="info" textGradient mb={2}>
-          We are working on PDD Fact
+          {serviceheading.page_paragraph}
           </MKTypography>
           {/* <MKTypography variant="body1" color="text" mb={2}>
             Many Fortune 500 companies, startups, universities and governmental institutions love
@@ -103,10 +99,9 @@ function Information() {
               opacity={0.6}
             />
           </Grid>
-        </Grid> */}
+      </Grid> */}
       </Container>
     </MKBox>
   );
 }
-
 export default Information;

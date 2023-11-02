@@ -14,6 +14,10 @@ import DefaultNavbar from 'examples/Navbars/DefaultNavbar'
 import DefaultFooter from 'examples/Footers/DefaultFooter'
 import FilledInfoCard from 'examples/Cards/InfoCards/FilledInfoCard'
 
+
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
 // Presentation page sections
 import Counters from 'frantend/sections/Counters'
 import Information from 'pages/Presentation/sections/Information'
@@ -24,7 +28,7 @@ import OurServices from 'components/OurServices'
 import Testimonials from 'pages/Presentation/sections/Testimonials'
 // import Download from "pages/Presentation/sections/Download";
 import Client from 'components/Client'
-import Carousel from 'frantend/components/Carousel'
+import Carouselss from 'frantend/components/Carouselss'
 // import Fade from '@mui/material/Fade'
 
 // Presentation page components
@@ -32,7 +36,8 @@ import BuiltByDevelopers from 'pages/Presentation/components/BuiltByDevelopers'
 
 // Routes
 import routes from 'routes'
-import footerRoutes from 'footer.routes'
+import Footer from "../landingpage/Author/sections/Footer";
+// import footerRoutes from 'footer.routes'
 
 // Images
 // import bgImage from 'assets/images/banner2.jpg'
@@ -43,6 +48,8 @@ function Home (props) {
   
   const [getdata, setData] = useState('')
 
+    document.title ="E2X INFOTECH || HOME PAGE"
+ 
   const fetchdatawithapi = () => {
     fetch(`http://localhost:5000/get_home_page_config/${props.title}`)
       .then(response => {
@@ -71,16 +78,30 @@ function Home (props) {
     fetchUserData()
   }, [])
 
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5
+    },
+    desktop: {
+      breakpoint: { max: 2000, min: 1024 },
+      items: 3
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
+
   return (
     <>
       <DefaultNavbar
         routes={routes}
-        // action={{
-        //     type: "external",
-        //     route: routes[0].collapse[1].collapse[0].route,
-        //     label: "login",
-        //     color: "info",
-        // }}
         sticky
       />
       {getdata &&
@@ -152,16 +173,16 @@ function Home (props) {
         {/* <DesignBlocks /> */}
         {/* <Pages /> */}
         <Client />
-        <Carousel />
+        <Carouselss/>
         <Container sx={{ mt: 6 }}>
           <BuiltByDevelopers />
         </Container>
         <Testimonials />
         <Container>
-          <Grid container spacing={3} mt={-10}>
-            {getdata1 &&
-              getdata1.map(user => (
-                <Grid item xs={12} lg={4}>
+        <Carousel responsive={responsive} itemAriaLabel='dineideindie'>
+            {getdata1 && getdata1.map(user => (
+                <Grid container spacing={1}>
+                <Grid item xs={12} lg={11.5}>
                   <FilledInfoCard
                     variant='gradient'
                     color='info'
@@ -170,74 +191,17 @@ function Home (props) {
                     description={user.pdd_paragraph}
                   />
                 </Grid>
+                </Grid>
               ))}
-          </Grid>
+          </Carousel>
         </Container>
-        {/* <Testimonials /> */}
-        {/* <Download /> */}
-        <MKBox pt={18} pb={6}>
-          <Container>
-            <Grid container spacing={3}>
-              <Grid
-                item
-                xs={12}
-                lg={5}
-                ml='auto'
-                sx={{ textAlign: { xs: 'center', lg: 'left' } }}
-              >
-                <MKTypography variant='h4' fontWeight='bold' mb={0.5}>
-                  Thank you for your support!
-                </MKTypography>
-                <MKTypography variant='body1' color='text'>
-                  We deliver the best centric websites and result driven digital
-                  marketing campaigns
-                </MKTypography>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                lg={5}
-                my={{ xs: 5, lg: 'auto' }}
-                mr={{ xs: 0, lg: 'auto' }}
-                sx={{ textAlign: { xs: 'center', lg: 'right' } }}
-              >
-                <MKSocialButton
-                  component='a'
-                  // href="https://twitter.com/intent/tweet?text=Check%20Material%20Design%20System%20made%20by%20%40CreativeTim%20%23webdesign%20%23designsystem%20%23mui5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fmaterial-kit-react"
-                  target='_blank'
-                  color='twitter'
-                  sx={{ mr: 1 }}
-                >
-                  <i className='fab fa-twitter' />
-                  &nbsp;Tweet
-                </MKSocialButton>
-                <MKSocialButton
-                  component='a'
-                  // href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/material-kit-react"
-                  target='_blank'
-                  color='facebook'
-                  sx={{ mr: 1 }}
-                >
-                  <i className='fab fa-facebook' />
-                  &nbsp;Share
-                </MKSocialButton>
-                <MKSocialButton
-                  component='a'
-                  // href="https://www.pinterest.com/pin/create/button/?url=https://www.creative-tim.com/product/material-kit-react"
-                  target='_blank'
-                  color='pinterest'
-                >
-                  <i className='fab fa-pinterest' />
-                  &nbsp;Pin it
-                </MKSocialButton>
-              </Grid>
-            </Grid>
-          </Container>
-        </MKBox>
+      
       </Card>
-      <MKBox pt={6} px={1} mt={6}>
-        <DefaultFooter content={footerRoutes} />
+      
+      <MKBox pt={6} px={1} mt={-10}>
+        <Footer />
       </MKBox>
+      
     </>
   )
 }

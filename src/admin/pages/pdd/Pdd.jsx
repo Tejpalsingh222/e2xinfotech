@@ -13,63 +13,59 @@ constructor(props) {
   super(props);
   
   this.state = {
-    selectedFile: null, // to store selected file
+    // selectedFile: null, // to store selected file
     handleResponse: null, // handle the API response
-    imageUrl: null ,// to store uploaded image path
+    pdd_image:null,
     pdd_heading:null,
     pdd_paragraph:null,
     
   };
 }
-
-
+handleInputChangedIcon(event) {
+  this.setState({
+    pdd_image: event.target.value
+  });
+}
 handleInputChangedHeading(event) {
   this.setState({
     pdd_heading: event.target.value
   });
 }
+
 handleInputChangedParagraph(event) {
   this.setState({
     pdd_paragraph: event.target.value
   });
 }
 
-onChangeFile = event => {
-  this.setState({
-     selectedFile: event.target.files[0]
-  });
-};
 
-// handle change event of input file
-
-
-
-
-// handle click event of the upload button
 handleUpload = (e) => {
-  const { selectedFile ,pdd_heading ,pdd_paragraph  } = this.state;
+  const { pdd_image ,pdd_heading ,pdd_paragraph  } = this.state;
   console.log(this.state);
   e.preventDefault();
-  if (!selectedFile) {
-    this.setState({
-      handleResponse: {
-        isSuccess: false,
-        message: "Please select image to upload."
-      }
-    });
-    return false;
-  }
-  const formData = new FormData();
  
-  formData.append('pdd_image', selectedFile, selectedFile.name);
+  const formData = new FormData();
+
+  formData.append('pdd_image', pdd_image);
   formData.append('pdd_heading', pdd_heading);
   formData.append('pdd_paragraph', pdd_paragraph);
 
-  
-  axios.post(BASE_URL, formData).then(response => {
-   
+
+  var object = {};
+  formData.forEach(function (value, key) {
+    object[key] = value;
+  });
+  var json = JSON.stringify(object);
+
+  axios({
+    method: "post",
+    url: BASE_URL,
+    data: json,
+    headers: { "Content-Type": "application/json" },
+  }).then(response => {
+
     this.setState({
-      
+
       handleResponse: {
         isSuccess: response.status === 200,
         message: response.data.message
@@ -79,6 +75,7 @@ handleUpload = (e) => {
   }).catch(err => {
     alert(err.message);
   });
+
 }
 render(){
   const title=this.props;
@@ -95,30 +92,33 @@ render(){
         <h1>{title.title}</h1>
       </div>
       <div className="bottom">
-        <div className="left">
-          <img ></img>
-         </div>
+       
         <div className="right">
           <form>
-          <div className="formInput">
+          {/* <div className="formInput">
               <label htmlFor="file"> 
                Image : <DriveFolderUploadOutlined className="icon"/>
               </label>
               <input type="file" onChange={this.onChangeFile} />
+            </div> */}
+            <div className="formInput" >
+              <label> Image</label>
+               
+              <input type="text" name="pdd_image" placeholder="icon" onChange={this.handleInputChangedIcon.bind(this)} />
             </div>
             
             <div className="formInput" >
-              <label> Pdd Heading</label>
+              <label>Heading</label>
                
               <input type="text" name="pdd_heading" placeholder=" heading" onChange={this.handleInputChangedHeading.bind(this)} />
             </div>
             <div className="formInput" >
-              <label>Pdd Paragraph</label>
+              <label>Paragraph</label>
                
               <input type="text" name="pdd_paragraph" placeholder=" paragraph" onChange={this.handleInputChangedParagraph.bind(this)} />
             </div>
             
-            <button value="button" onClick={this.handleUpload} style={{margin:'auto',height:'50px'}}>upload </button>
+            <button value="button" onClick={this.handleUpload} style={{margin:'auto',height:'50px'}}>Upload </button>
             {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
           </form>
         </div>

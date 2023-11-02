@@ -95,9 +95,6 @@ render(){
         <h1>{title.title}</h1>
       </div>
       <div className="bottom">
-        <div className="left">
-          <img ></img>
-         </div>
         <div className="right">
           <form>
           <div className="formInput">
@@ -113,12 +110,12 @@ render(){
               <input type="text" name="service_title" placeholder="carousel heading" onChange={this.handleInputChangedHeading.bind(this)} />
             </div>
             <div className="formInput" >
-              <label>Service paragraph</label>
+              <label>Service Paragraph</label>
                
               <input type="text" name="service_para" placeholder="carousel paragraph" onChange={this.handleInputChangedParagraph.bind(this)} />
             </div>
             
-            <button value="button" onClick={this.handleUpload} style={{margin:'auto',height:'50px'}}>upload </button>
+            <button value="button" onClick={this.handleUpload} style={{margin:'auto',height:'50px'}}>Upload </button>
             {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
           </form>
         </div>

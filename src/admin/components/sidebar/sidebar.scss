@@ -2,7 +2,17 @@
     flex: 1;
     border-right: 0.5px solid rgb(230,227,227);
     min-height: 100vh;
-    background-color: white;
+    background-color:white;
+  position:fixed;
+  height: 50px;
+  overflow:scroll  ;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-left: 15px;
+  padding-bottom: 25px;
+  top: 0px;
+
+
 
     .top{
         height: 50px;
@@ -12,7 +22,8 @@
 
 
     .logo{
-        font-size: 20px;
+        font-family:cursive;
+        font-size: 18px;
         font-weight: bold;
         color:blue;
     }
@@ -31,10 +42,11 @@
                 padding: 0;
 
                 .title{
-                    font-size: 10px;
+                    font-family: "Times New Roman", Times, serif;
+                    font-size: 15px;
                     font-weight: bold;
                     color: #999;
-                    margin-top: 15px;
+                    margin-top: 18px;
                     margin-bottom: 5px;
                 }
 
@@ -54,13 +66,19 @@
                     }
 
                     span{
-                        font-size: 13px;
+                        font-family:cursive;
+                        font-size: 15px;
                         font-weight: bold;
                         color: #888;
                         margin-left: 10px;
                     }
                 }
             }
+        }
+
+        .sidenav-toggler.active .sidenav-toggler-inner:before {
+            -webkit-transform: scale(1);
+            transform: scale(1);
         }
 
         .bottom{
@@ -83,6 +101,22 @@
                     background-color: #333;
                 }
             }
-        }
-        
+        } 
 }
+@media screen and (min-width: 992px)
+{
+.sidebar{
+    flex: 1;
+    min-height: 100vh;
+    position:fixed;
+  height: 50px;
+  overflow:scroll  ;
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-left: 15px;
+  padding-bottom: 25px;
+  top: 0px;
+
+}
+}
+

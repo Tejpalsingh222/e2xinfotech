@@ -27,8 +27,10 @@ class Pdd_edit extends Component {
     fetch(`http://localhost:5000/edit-pdd/${service_id}`)
       .then(response => response.json()).then(json => json.data)
       .then(data => {
-        // console.log('hii',data)
-        this.setState({ service: data });
+        console.log('hii',data)
+        this.setState({ pdd_heading: data[0].pdd_heading });
+        this.setState({ pdd_image: data[0].pdd_image });
+        this.setState({ pdd_paragraph: data[0].pdd_paragraph });
       });
   }
   handleInputChangedHeading(event) {
@@ -93,7 +95,7 @@ class Pdd_edit extends Component {
   }
   render() {
     const title = this.props;
-    const { handleResponse, imageUrl } = this.state;
+    const { handleResponse, pdd_heading,pdd_paragraph,pdd_image } = this.state;
     const chec = this;
     return (
       <div className="new">
@@ -103,11 +105,9 @@ class Pdd_edit extends Component {
           <div className="top">
             <h1>{title.title}</h1>
           </div>
-          {this.state.service && this.state.service.map((user, index) => (
+       
             <div className="bottom">
-              <div className="left">
-                <img src={'http://localhost:5000/uploads/${item.carousel_image}'}></img>
-              </div>
+              
               <div className="right">
                 <form >
                   {/* <div className="formInput">
@@ -117,29 +117,29 @@ class Pdd_edit extends Component {
                     <input type="file" key={index} onChange={this.onChangeFile} />
                   </div> */}
                    <div className="formInput" >
-                    <label>Pdd Icons</label>
+                    <label> Icons</label>
 
-                    <input type="text" key={index} name="pdd_image" defaultValue={user.pdd_image} placeholder=" icon" onChange={this.onChangeFile.bind(this)} />
+                    <input type="text" name="pdd_image" defaultValue={pdd_image} placeholder=" icon" onChange={this.onChangeFile.bind(this)} />
                   </div>
 
                   <div className="formInput" >
-                    <label>Pdd heading</label>
+                    <label>Heading</label>
 
-                    <input type="text" key={index} name="pdd_heading" defaultValue={user.pdd_heading} placeholder=" heading" onChange={this.handleInputChangedHeading.bind(this)} />
+                    <input type="text" name="pdd_heading" defaultValue={pdd_heading} placeholder=" heading" onChange={this.handleInputChangedHeading.bind(this)} />
                   </div>
                   <div className="formInput" >
-                    <label>Pdd paragraph</label>
+                    <label>Paragraph</label>
 
-                    <input type="text" key={index} name="pdd_paragraph" defaultValue={user.pdd_paragraph} placeholder=" paragraph" onChange={this.handleInputChangedParagraph.bind(this)} />
+                    <input type="text" name="pdd_paragraph" defaultValue={pdd_paragraph} placeholder=" paragraph" onChange={this.handleInputChangedParagraph.bind(this)} />
                   </div>
                   
-                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>edit </button>
+                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>Edit </button>
                   {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
                 </form>
 
               </div>
             </div>
-          ))}
+          
         </div>
 
       </div>
@@ -150,3 +150,4 @@ class Pdd_edit extends Component {
 }
 
 export default Pdd_edit;
+

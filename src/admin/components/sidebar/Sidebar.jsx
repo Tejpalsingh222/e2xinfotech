@@ -27,48 +27,82 @@ const Sidebar = (props) => {
   const {dispatch} = useContext(DarkModeContext)
   const navigate = useNavigate();
   const handleLogout = () => {  
+
+
+    
     removeUserSession();
     navigate('/dashboard/login');
   }
 
   return (
+    
     <div className="sidebar"> 
     <div className="top">
-      <Link to="/" style={{textDecoration: "none"}}>
-        <span className="logo">E2X Infotech pvt ltd</span>
-     </Link>
+      {/* <Link to="/" style={{textDecoration: "none"}}> */}
+        <span className="logo">E2X Infotech Pvt Ltd</span>
+     {/* </Link> */}
     </div>
     <hr />
     <div className="center">
         <ul>
-           <p className="title">MAIN</p>
-          <li>
-            <DashboardIcon className="icon" />
-            <span>Dashboard</span>
-            </li>
-            <p className="title">USER LISTS</p>
-            <Link to="/users" style={{textDecoration: "none"}}>
-            <li>
-              <PersonOutlineOutlinedIcon className="icon" />
-            <span>Users</span>
-            </li>
-            </Link>
-           {/*home page link */}
-           <p className="title">HOME HEADER SETTING</p>
-           <Link to='/dashboard/home_header_page_list' style={{textDecoration: "none"}}>
-           <li><span >Home page header</span> </li>
-           </Link>
+        <p className="title">HOME PAGE SETTING</p>
 
+           {/* <Link to='/dashboard/navbar_list' style={{textDecoration: "none"}}>
+           <li><List className="icon" />
+            <span >Navbar</span> </li>
+           </Link> */}
+
+
+           <Link to='/dashboard/home_header_page_list' style={{textDecoration: "none"}}>
+           <li><List className="icon" />
+            <span> Page header</span> </li>
+           </Link>
+{/* 
+           <Link to='/dashboard/home_header_page_list2' style={{textDecoration: "none"}}>
+           <li><List className="icon" />
+            <span >About page header</span> </li>
+           </Link> */}
           {/* company history route */}
            <Link to='/dashboard/home_company_list' style={{textDecoration: "none"}}>
-           <li><span >Home Company History</span> </li>
+           <li>
+           <List className="icon" /><span >Company History</span> </li>
            </Link>
             {/* company information route */}
            <Link to='/dashboard/home_information_list' style={{textDecoration: "none"}}>
-           <li><span >Home Information list</span> </li>
+           <li>
+           <List className="icon" />
+           <span >Information list</span> </li>
            </Link> 
+
+           <Link to='/dashboard/home_information_list2' style={{textDecoration: "none"}}>
+           <li>
+           <List className="icon" />
+           <span >Information list 2</span> </li>
+           </Link> 
+
+           <p className="title">ABOUT PAGE SETTING</p>
+           <Link to='/dashboard/about_information_list' style={{textDecoration: "none"}}>
+           <li>
+           <List className="icon" />
+           <span >About_Information</span> </li>
+           </Link> 
+
+           <Link to='/dashboard/about_data_list' style={{textDecoration: "none"}}>
+           <li>
+           <List className="icon" />
+           <span >Company_Image</span> </li>
+           </Link> 
+
+           <Link to='/dashboard/about_data_list1' style={{textDecoration: "none"}}>
+           <li>
+           <List className="icon" />
+           <span >Company_Profile</span> </li>
+           </Link> 
+           
+
+
             {/* service route */}
-            <p className="title">Home Our Services</p>
+            <p className="title">SERVICES SETTING</p>
             <Link to="/dashboard/home_service_data_list" style={{textDecoration: "none"}}>
             <li>
               <CleaningServices className="icon" />
@@ -80,59 +114,27 @@ const Sidebar = (props) => {
             <span> Expertise List</span>
             </li>
              </Link>
+             <Link to="/dashboard/contact_us_list" style={{textDecoration: "none"}}>
+            <li>
+              <List className="icon" />
+            <span>Contact List</span>
+            </li>
+             </Link>
+
+             <Link to="/dashboard/media_list" style={{textDecoration: "none"}}>
+            <li>
+              <List className="icon" />
+            <span>Socialmedia List</span>
+            </li>
+             </Link>
             
              </Link>
              {/*about route */}
-             <p className="title">Home </p> 
-            
-            {/* <Link to="/dashboard/home_service_data_list" style={{textDecoration: "none"}}>
-            <li>
-              <List className="icon" />
-            <span>Service List</span>
-            </li>
-             </Link>  */}
-             {/* route for home page
-             
-              <p className="title">Home</p>
-              
-            <Link to="/dashbaord/carousel_list" style={{textDecoration: "none"}}>
-            <li>
-              <List className="icon" />
-            <span>Company_Information</span>
-            </li>
-            </Link>
-            <Link to="/dashboard/about_add" style={{textDecoration: "none"}}>
-            <li>
-              <StoreIcon className="icon" />
-            <span>header </span>
-            </li>
-             </Link>
-            <Link to="/dashboard/about_list" style={{textDecoration: "none"}}>
-            <li>
-              <StoreIcon className="icon" />
-            <span>footer</span>
-            </li>
-             </Link>
-             <Link to="/dashbaord/company_list/" style={{textDecoration: "none"}}>
-            <li>
-              <List className="icon" />
-            <span>Company_list</span>
-            </li>
-             </Link>
-            
-            
-             <Link to="/dashbaord/expert_list/" style={{textDecoration: "none"}}>
-            <li>
-              <List className="icon" />
-            <span> Expertise List</span>
-            </li>
-             </Link>
-             {/**route for pdd fact  */}
-           
+             <p className="title">OTHER EDITS</p>  
              <Link to="/dashboard/home_pdd_list" style={{textDecoration: "none"}}>
             <li>
               <List className="icon" />
-            <span> Pdd fact list</span>
+            <span>  Facts list</span>
             </li>
              </Link>
                {/** card carousel route  */}
@@ -140,60 +142,58 @@ const Sidebar = (props) => {
              <Link to="/dashboard/home_carousel_client_list" style={{textDecoration: "none"}}>
             <li>
               <List className="icon" />
-            <span> Card Carousel List</span>
+            <span> Client List</span>
             </li>
             </Link>
-               {/** card temp service route out */}
-               
-             <Link to="/dashbaord/card_temp_list/" style={{textDecoration: "none"}}>
+
+            <Link to="/dashboard/team_excutive_list" style={{textDecoration: "none"}}>
             <li>
               <List className="icon" />
-            <span> Service Slider list</span>
+            <span> Our Team List</span>
             </li>
             </Link>
-             {/** user route login logout */}
-              {/*homeiamge link */}
-              <Link to="/dashboard/home_image_list/" style={{textDecoration: "none"}}>
-            <li>
-              <List className="icon" />
-            <span>Home image list</span>
-            </li>
-            </Link>
-            {/* superheading link */}
-            <Link to="/dashbaord/super_heading_list/" style={{textDecoration: "none"}}>
-            <li>
-              <List className="icon" />
-            <span> Super heading list</span>
-            </li>
-            </Link>
-            
-            <p className="title">USER</p>
-            <li>
-              <SettingsOutlinedIcon className="icon" />
-            <span>Profile</span>
-            </li> 
-           
              
+            <Link to="/dashboard/blog_list" style={{textDecoration: "none"}}>
+            <li>
+              <List className="icon" />
+            <span>Blog List</span>
+            </li>
+            </Link>
+
+            <Link to="/dashboard/our_blog_list" style={{textDecoration: "none"}}>
+            <li>
+              <List className="icon" />
+            <span>Our Blog Page</span>
+            </li>
+            </Link>
+            <Link to="/dashboard/heading_list" style={{textDecoration: "none"}}>
+            <li>
+              <List className="icon" />
+            <span>Heading List</span>
+            </li>
+            </Link>
+            <Link to="/dashboard/job_upload_list" style={{textDecoration: "none"}}>
+            <li>
+              <List className="icon" />
+            <span>Job Description</span>
+            </li>
+            </Link>
+
+            {/* <Link to="/dashboard/main_editor" style={{textDecoration: "none"}}>
+            <li>
+              <List className="icon" />
+            <span>Main Editor</span>
+            </li>
+            </Link> */}
+            <p className="title">USER</p>  
             <li>
               <InputOutlinedIcon className="icon" />
             <span onClick={handleLogout}>Logout</span>
             </li>
             <Link/>
-           
         </ul>
-
     </div>
-    {/* <div className="bottom">
-        <div className="colorOption" 
-        onClick={() => dispatch({ type : "LIGHT"})}>
-        </div> */}
-
-          {/* <div className="colorOption"
-        onClick={() => dispatch({ type : "DARK"})}>
-        </div> */}
-
     </div>
-    // </div>
   )
 }
 

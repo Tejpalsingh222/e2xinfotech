@@ -5,7 +5,7 @@ import { DriveFolderUploadOutlined } from "@mui/icons-material";
 import { useState } from "react";
 import axios from 'axios';
 import React, { Component } from 'react';
-const BASE_URL = 'http://localhost:5000/add_home_header_data/';
+const BASE_URL = 'http://localhost:5000/add_home_information_data/';
  
 class home_company_information extends Component {
 constructor(props) {
@@ -13,11 +13,12 @@ constructor(props) {
   super(props);
   
   this.state = {
-    selectedFile: null, // to store selected file
+    // selectedFile: null, // to store selected file
     handleResponse: null, // handle the API response
     imageUrl: null ,// to store uploaded image path
     title:null,
     description:null,
+    icons:null,
     
   };
 }
@@ -34,6 +35,14 @@ handleInputChangedParagraph(event) {
   });
 }
 
+handleInputChangedIcons(event) {
+  this.setState({
+    icons: event.target.value
+  });
+}
+
+
+
 onChangeFile = event => {
   this.setState({
      selectedFile: event.target.files[0]
@@ -47,29 +56,32 @@ onChangeFile = event => {
 
 // handle click event of the upload button
 handleUpload = (e) => {
-  const { selectedFile ,title ,description  } = this.state;
+  const {title ,description ,icons } = this.state;
   console.log(this.state);
   e.preventDefault();
-  if (!selectedFile) {
-    this.setState({
-      handleResponse: {
-        isSuccess: false,
-        message: "Please select image to upload."
-      }
-    });
-    return false;
-  }
+ 
   const formData = new FormData();
  
-  formData.append('home_header_image', selectedFile, selectedFile.name);
+  // formData.append('home_header_image', selectedFile, selectedFile.name);
   formData.append('title', title);
   formData.append('description', description);
+  formData.append('icons',icons)
 
-  
-  axios.post(BASE_URL, formData).then(response => {
-   
+  var object = {};
+  formData.forEach(function (value, key) {
+    object[key] = value;
+  });
+  var json = JSON.stringify(object);
+
+  axios({
+    method: "POST",
+    url: BASE_URL,
+    data: json,
+    headers: { "Content-Type": "application/json" },
+  }).then(response => {
+
     this.setState({
-      
+
       handleResponse: {
         isSuccess: response.status === 200,
         message: response.data.message
@@ -79,6 +91,7 @@ handleUpload = (e) => {
   }).catch(err => {
     alert(err.message);
   });
+
 }
 render(){
   const title=this.props;
@@ -92,20 +105,12 @@ render(){
     <div className="newContainer">
       <Navbar/>
       <div className="top">
-        <h1>about</h1>
+        <h1>{title.title}</h1>
       </div>
       <div className="bottom">
-        <div className="left">
-          <img ></img>
-         </div>
+       
         <div className="right">
           <form>
-          <div className="formInput">
-              <label htmlFor="file"> 
-               Image : <DriveFolderUploadOutlined className="icon"/>
-              </label>
-              <input type="file" onChange={this.onChangeFile} />
-            </div>
             
             <div className="formInput" >
               <label>Title</label>
@@ -113,12 +118,18 @@ render(){
               <input type="text" name="title" placeholder="title" onChange={this.handleInputChangedHeading.bind(this)} />
             </div>
             <div className="formInput" >
-              <label>description</label>
+              <label>Description</label>
                
               <input type="text" name="description" placeholder="description" onChange={this.handleInputChangedParagraph.bind(this)} />
             </div>
+
+            <div className="formInput" >
+              <label>icons</label>
+               
+              <input type="text" name="icons" placeholder="icons" onChange={this.handleInputChangedIcons.bind(this)} />
+            </div>
             
-            <button value="button" onClick={this.handleUpload} style={{margin:'auto',height:'50px'}}>upload </button>
+            <button value="button" onClick={this.handleUpload} style={{margin:'auto',height:'50px'}}>Upload </button>
             {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
           </form>
         </div>

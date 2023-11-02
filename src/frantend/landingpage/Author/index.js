@@ -7,10 +7,12 @@ import MKBox from "components/MKBox";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 
 // Author page sections
-import Profile from "./sections/Profile";
-import Posts from "./sections/Posts";
-import Contact from "./sections/Contact";
-import Footer from "./sections/Footer";
+import Profile from "frantend/landingpage/Author/sections/Profile";
+import Posts from "frantend/landingpage/Author/sections/Posts";
+
+import Trip from "frantend/landingpage/Author/sections/Feedsection"
+// import Contact from "pages/LandingPages/Author/sections/Contact";
+import Footer from "frantend/landingpage/Author/sections/Footer";
 
 // Routes
 import routes from "routes";
@@ -19,18 +21,11 @@ import routes from "routes";
 import bgImage from "assets/images/banner2.jpg";
 
 function Author() {
+  document.title ="E2X INFOTECH || BLOG PAGE"
   return (
     <>
       <DefaultNavbar
         routes={routes}
-        // action={{
-        //   type: "external",
-        //   route: "/pages/authentication/sign-in",
-        //   label: "Login",
-        //   color: "info",
-        // }}
-        // transparent
-        // light
         sticky
       />
       <MKBox bgColor="white">
@@ -47,7 +42,9 @@ function Author() {
             backgroundPosition: "center",
             display: "grid",
             placeItems: "center",
+            
           }}
+          
         />
         <Card
           sx={{
@@ -63,7 +60,9 @@ function Author() {
           <Profile />
           <Posts />
         </Card>
-        <Contact />
+        {/* <Trip/> */}
+        
+        {/* <Contact /> */}
         <Footer />
       </MKBox>
     </>

@@ -3,13 +3,14 @@ import Sidebar from "../../components/sidebar/Sidebar"
 import Navbar from "../../components/navbar/Navbar"
 import Home_page_header from "../../components/datatable/Home_page_header"
 
-const Home_page_header_list = () => {
+const Home_page_header_list = (props) => {
+
   return (
     <div className="list">
       <Sidebar/>
       <div className="listContainer">
         <Navbar/>
-        <Home_page_header/>
+        <Home_page_header title="Home"/>
       </div>
     </div>
 )

@@ -9,20 +9,14 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 const BASE_URL = 'http://localhost:5000/update_service/';
 
 class Service_edit extends Component {
-
-
   constructor(props) {
-
-
-
-
     super(props);
 
     this.state = {
       selectedFile: null, // to store selected file
       handleResponse: null, // handle the API response
       imageUrl: null,// to store uploaded image path
-      service_title: null,
+      service_title:null,
       service_para: null,
 
     };
@@ -33,13 +27,12 @@ class Service_edit extends Component {
     fetch(`http://localhost:5000/edit-service-data/${service_id}`)
       .then(response => response.json()).then(json => json.data)
       .then(data => {
-        // console.log('hii',data)
-        this.setState({ service: data });
+        console.log('hii',data[0].service_title)
+        this.setState({ service_title: data[0].service_title });
+        this.setState({ service_para: data[0].service_para });
+        this.setState({ selectedFile: data[0].image});
       });
   }
-
-
-
 
   handleInputChangedHeading(event) {
     this.setState({
@@ -59,29 +52,18 @@ class Service_edit extends Component {
     });
   };
 
-  // handle change event of input file
-
-
-
-
-  // handle click event of the upload button
   handleUpload = (e) => {
     const { selectedFile, service_title, service_para } = this.state;
     console.log(this.state);
     e.preventDefault();
-    if (!selectedFile) {
-      this.setState({
-        handleResponse: {
-          isSuccess: false,
-          message: "Please select image to upload."
-        }
-      });
-      return false;
-    }
 
     const formData = new FormData();
-
-    formData.append('dataFile', selectedFile, selectedFile.name);
+    console.log("formData======>", formData);
+    if (selectedFile) {
+      if (selectedFile.name) {
+        formData.append('service_image',selectedFile,selectedFile.name);
+      }    
+    }   
     formData.append('service_title', service_title);
     formData.append('service_para', service_para);
 
@@ -96,8 +78,8 @@ class Service_edit extends Component {
     axios({
       method: "post",
       url: BASE_URL + ser_id,
-      data: json,
-      headers: { "Content-Type": "application/json" },
+      data: formData,
+    
     }).then(response => {
 
       this.setState({
@@ -116,11 +98,9 @@ class Service_edit extends Component {
   render() {
 
 
-
-
     const title = this.props;
-    const { handleResponse, imageUrl } = this.state;
-    const chec = this;
+    const { handleResponse, selectedFile, service_title,service_para } = this.state;
+    console.log('steate',this.state);
     return (
 
       <div className="new">
@@ -133,11 +113,8 @@ class Service_edit extends Component {
 
             <h1>{title.title}</h1>
           </div>
-          {this.state.service && this.state.service.map((user, index) => (
+         
             <div className="bottom">
-              <div className="left">
-                <img src={'http://localhost:5000/uploads/${item.carousel_image}'}></img>
-              </div>
               <div className="right">
 
                 <form >
@@ -145,27 +122,27 @@ class Service_edit extends Component {
                     <label htmlFor="file">
                       Image : <DriveFolderUploadOutlined className="icon" />
                     </label>
-                    <input type="file" key={index} onChange={this.onChangeFile} />
+                    <input type="file" onChange={this.onChangeFile} />
                   </div>
 
                   <div className="formInput" >
-                    <label>Service heading</label>
+                    <label>Service Heading</label>
 
-                    <input type="text" key={index} name="service_title" defaultValue={user.service_title} placeholder="carousel heading" onChange={this.handleInputChangedHeading.bind(this)} />
+                    <input type="text" name="service_title" defaultValue={service_title} placeholder="carousel heading" onChange={this.handleInputChangedHeading.bind(this)} />
                   </div>
                   <div className="formInput" >
-                    <label>Service paragraph</label>
+                    <label>Service Paragraph</label>
 
-                    <input type="text" key={index} name="update_service" defaultValue={user.service_para} placeholder="carousel paragraph" onChange={this.handleInputChangedParagraph.bind(this)} />
+                    <input type="text" name="update_service" defaultValue={service_para} placeholder="carousel paragraph" onChange={this.handleInputChangedParagraph.bind(this)} />
                   </div>
                   
-                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>edit </button>
+                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>Edit </button>
                   {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
                 </form>
 
               </div>
             </div>
-          ))}
+          
         </div>
 
       </div>

@@ -9,22 +9,43 @@ import MKAvatar from "components/MKAvatar";
 import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
-// Images
-import profilePicture from "assets/images/bruce-mars.jpg";
+import { useState, useEffect } from 'react'
+
+
+const img = 'http://localhost:5000/uploads/'
 
 function Profile() {
+  const [getdata, setData] = useState('')
+
+  const fetchdatawithapi = () => {
+    fetch(`http://localhost:5000/get_blog`)
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        console.log('ch',data.data);
+        setData(data.data)
+      })
+  }
+  useEffect(() => {
+    fetchdatawithapi()
+  }, [])
   return (
     <MKBox component="section" py={{ xs: 6, sm: 12 }}>
+       {getdata && getdata.map(user => (
       <Container>
+
         <Grid container item xs={12} justifyContent="center" mx="auto">
           <MKBox mt={{ xs: -16, md: -20 }} textAlign="center">
-            <MKAvatar src={profilePicture} alt="Burce Mars" size="xxl" shadow="xl" />
+
+            <MKAvatar src={img + user.image} alt="Burce Mars" size="xxl" shadow="xl" />
           </MKBox>
+  
           <Grid container justifyContent="center" py={6}>
             <Grid item xs={12} md={7} mx={{ xs: "auto", sm: 6, md: 1 }}>
               <MKBox display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-                <MKTypography variant="h3">E2X INFOTECH PVT LTD</MKTypography>
-                <MKButton variant="outlined" color="info" size="small">
+                <MKTypography variant="h3">{user.title}</MKTypography>
+                <MKButton  variant="outlined" color="info" size="small">
                   Follow
                 </MKButton>
               </MKBox>
@@ -55,36 +76,15 @@ function Profile() {
                 </Grid>
               </Grid>
               <MKTypography variant="body1" fontWeight="light" color="text">
-              E2X Infotech is a core technology company. We believe in innovating. We develop all kinds of websites - corporate websites, e-commerce website, membership sites and complex portals. We have been able to initiate and formulate internationally acknowledged processes to our clients across the globe.
-                <MKTypography
-                  component="a"
-                  href="#"
-                  variant="body1"
-                  fontWeight="light"
-                  color="info"
-                  mt={3}
-                  sx={{
-                    width: "max-content",
-                    display: "flex",
-                    alignItems: "center",
-
-                    "& .material-icons-round": {
-                      transform: `translateX(3px)`,
-                      transition: "transform 0.2s cubic-bezier(0.34, 1.61, 0.7, 1.3)",
-                    },
-
-                    "&:hover .material-icons-round, &:focus .material-icons-round": {
-                      transform: `translateX(6px)`,
-                    },
-                  }}
-                >
-                  More about me <Icon sx={{ fontWeight: "bold" }}>arrow_forward</Icon>
-                </MKTypography>
+              {user.description}
               </MKTypography>
             </Grid>
           </Grid>
+         
         </Grid>
+       
       </Container>
+         ))}
     </MKBox>
   );
 }

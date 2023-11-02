@@ -92,9 +92,7 @@ render(){
         <h1>{title.title}</h1>
       </div>
       <div className="bottom">
-        <div className="left">
-          <img ></img>
-         </div>
+       
         <div className="right">
           <form>
           <div className="formInput">
@@ -126,7 +124,7 @@ render(){
                
               <input type="text" name="carousel_button_name" placeholder="carousel button name" onChange={this.handleInputChangedButton.bind(this)}/>
             </div> */}
-            <button value="button" onClick={this.handleUpload} style={{margin:'auto',height:'50px'}}>Edit</button>
+            <button value="button" onClick={this.handleUpload} style={{margin:'auto',height:'50px'}}>Upload</button>
             {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
           </form>
         </div>

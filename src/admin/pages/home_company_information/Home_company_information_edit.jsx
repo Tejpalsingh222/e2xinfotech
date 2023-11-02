@@ -6,7 +6,7 @@ import { useState } from "react";
 import axios from 'axios';
 import React, { Component } from 'react';
 import { Link, useNavigate, useParams } from "react-router-dom";
-const BASE_URL = 'http://localhost:5000/update_home_comapny_info/';
+const BASE_URL = 'http://localhost:5000/Company_info_update/';
 const img='http://localhost:5000/uploads'
 
 class Home_company_information_edit extends Component {
@@ -22,21 +22,23 @@ class Home_company_information_edit extends Component {
       imageUrl: null,// to store uploaded image path
       title: null,
       description: null,
+      icons:null,
      
 
     };
   }
 
   componentDidMount() {
-    const carousel_id = window.location.href.split('/')[5]
-    fetch(`http://localhost:5000/getcompanydata/${carousel_id}`)
+    const about_id = window.location.href.split('/')[5]
+    fetch(`http://localhost:5000/edit_company_info/${about_id}`)
       .then(response => response.json()).then(json => json.data)
       .then(data => {
-        console.log('hooooo',data)
-        this.setState({ books: data });
+        console.log('hii',data)
+        this.setState({ title: data[0].title});
+        this.setState({ description: data[0].description });
+        this.setState({icons:data[0].icons});
       });
   }
-
 
   handleInputChangedHeading(event) {
     this.setState({
@@ -103,8 +105,8 @@ class Home_company_information_edit extends Component {
 
   }
   render() {
-    const title = this.props;
-    const { handleResponse, imageUrl } = this.state;
+    const head = this.props;
+    const { handleResponse, title, description, icons} = this.state;
     const chec = this;
     return (
 
@@ -116,40 +118,35 @@ class Home_company_information_edit extends Component {
 
           <div className="top">
 
-            <h1>{title.title}</h1>
+            <h1>{head.title}</h1>
           </div>
-          {this.state.books && this.state.books.map((user, index) => (
+         
             <div className="bottom">
-              <div className="left">
-                <img src={`http://localhost:5000/uploads/${user.carousel_image}`} style={{height:'200px',width:'300px'}}></img>
-              </div>
+            
               <div className="right">
-
                 <form >
-                 
-
                   <div className="formInput" >
-                    <label>carousel heading</label>
+                    <label> Title</label>
 
-                    <input type="text" key={index} name="title" defaultValue={user.title} placeholder="title" onChange={this.handleInputChangedHeading.bind(this)} />
+                    <input type="text"  name="title" defaultValue={title} placeholder="title" onChange={this.handleInputChangedHeading.bind(this)} />
                   </div>
                   <div className="formInput" >
-                    <label>description</label>
+                    <label>Description</label>
 
-                    <input type="text" key={index} name="description" defaultValue={user.description} placeholder="description" onChange={this.handleInputChangedParagraph.bind(this)} />
+                    <input type="text" name="description" defaultValue={description} placeholder="description" onChange={this.handleInputChangedParagraph.bind(this)} />
                   </div>
                   <div className="formInput" >
-                    <label>history</label>
+                    <label>Icons</label>
 
-                    <input type="text" key={index} name="home_couter" defaultValue={user.home_couter} placeholder="history name" onChange={this.handleInputChangedButton.bind(this)} />
+                    <input type="text"  name="icons" defaultValue={icons} placeholder="icons" onChange={this.handleInputChangedButton.bind(this)} />
                   </div>
-                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>edit </button>
+                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>Edit </button>
                   {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
                 </form>
 
               </div>
             </div>
-          ))}
+       
         </div>
 
       </div>

@@ -1,19 +1,4 @@
-/**
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// react-router components
 import { Link } from "react-router-dom";
 
 // prop-types is a library for typechecking of props
@@ -79,14 +64,8 @@ function CenteredBlogCard({ image, title, description, action }) {
             {action.label}
           </MKButton>
         ) : (
-          <MKButton
-            component={Link}
-            to={action.route}
-            variant="gradient"
-            size="small"
-            color={action.color ? action.color : "dark"}
-          >
-            {action.label}
+          <MKButton>
+           
           </MKButton>
         )}
       </MKBox>
@@ -115,5 +94,4 @@ CenteredBlogCard.propTypes = {
     label: PropTypes.string.isRequired,
   }).isRequired,
 };
-
 export default CenteredBlogCard;

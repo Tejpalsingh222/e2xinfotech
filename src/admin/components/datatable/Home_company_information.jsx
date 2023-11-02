@@ -1,6 +1,6 @@
 import "./home_company_information.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns } from "../../home_company_history_data";
+import { userColumns } from "../../home_company_information_data";
 import { useState,useEffect } from "react";
 import { Link,useNavigate} from 'react-router-dom';
 const Home_company_history = () => {
@@ -18,6 +18,9 @@ const Home_company_history = () => {
   useEffect(() => {
     fetchUserData()
   }, [])
+  const updateButton = ()=>{
+
+  }
   const navigate = useNavigate();
   const handleDelete = (id) => {
     // http://localhost:5000/delete/47
@@ -38,12 +41,22 @@ const Home_company_history = () => {
     console.log('e',e);
   });
   };
+  const updateStatus = (id)=>{
+    // alert(id)
+  }
   const handleEdit = (id) => {
-    navigate("/dashbaord/home_company_edit/" + id);
+    navigate("/dashboard/home_information_edit/" + id);
   }
 
 
   const actionColumn = [
+    // {
+    //   field: "status",
+    //   headerName: "Status",
+    //   width: 160,
+    //   renderCell: (params) => {
+    //   },
+    // },
     {
       field: "action",
       headerName: "Action",
@@ -63,22 +76,17 @@ const Home_company_history = () => {
             >
               Delete
             </div>
-            {/* <div
-              className="updateButton"
-              onClick={() => updateButton(params.row.id)}
-            >
-              Active
-            </div> */}
           </div>
         );
       },
     },
+   
   ];
   return (
     <div className="datatable">
       <div className="datatableTitle">
         Show company information
-        <Link to="/dashboard/home_company_add" className="link">
+        <Link to="/dashboard/home_information_add" className="link">
           Add New company information
         </Link>
       </div>
@@ -89,7 +97,7 @@ const Home_company_history = () => {
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
+        // checkboxSelection
       />
     </div>
   );

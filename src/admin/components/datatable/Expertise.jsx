@@ -7,7 +7,7 @@ const Expertise = () => {
   const [data, setData] = useState([])
   const [dedat, setRepos] = useState(null);
   const fetchUserData = () => {
-    fetch("http://localhost:5000/getExpert")
+    fetch("http://localhost:5000/getExpert/")
       .then(response => response.json()).then(json => json.data)
       .then(data => {
         console.log('welcome',data)
@@ -52,8 +52,6 @@ const Expertise = () => {
   const handleEdit = (id) => {
     navigate("/dashboard/home_expertise_edit/"+ id);
   }
-
-
   const actionColumn = [
     {
       field: "action",
@@ -100,7 +98,7 @@ const Expertise = () => {
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
+        // checkboxSelection
       />
     </div>
   );

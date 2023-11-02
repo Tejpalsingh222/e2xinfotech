@@ -80,7 +80,7 @@ function TransparentBlogCard({ image, title, description, action }) {
       sx={{
         background: "transparent",
         boxShadow: "none",
-        overflow: "visible",
+        overflow: "hidden",
       }}
     >
       {action.type === "internal" ? (
@@ -133,7 +133,7 @@ function TransparentBlogCard({ image, title, description, action }) {
             sx={cardActionStyles}
           >
             {action.label}
-            <Icon sx={{ fontWeight: "bold" }}>arrow_forward</Icon>
+            {/* <Icon sx={{ fontWeight: "bold" }}>arrow_forward</Icon> */}
           </MKTypography>
         )}
       </MKBox>

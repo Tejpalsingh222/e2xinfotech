@@ -82,9 +82,9 @@ const Pdddata = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Show Pdd fact
+        Show Facts
         <Link to="/dashboard/home_pdd_add" className="link">
-          Add New PDD
+          Add New Fact
         </Link>
       </div>
       <DataGrid
@@ -94,7 +94,7 @@ const Pdddata = () => {
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
+        // checkboxSelection
       />
     </div>
   );

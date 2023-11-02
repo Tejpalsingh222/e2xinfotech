@@ -140,9 +140,7 @@ class Carousel_edit extends Component {
           </div>
           {this.state.books && this.state.books.map((user, index) => (
             <div className="bottom">
-              <div className="left">
-                <img src={`http://localhost:5000/uploads/${user.carousel_image}`} style={{height:'200px',width:'300px'}}></img>
-              </div>
+  
               <div className="right">
 
                 <form >

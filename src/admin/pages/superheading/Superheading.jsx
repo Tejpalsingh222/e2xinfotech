@@ -21,8 +21,6 @@ constructor(props) {
     
   };
 }
-
-
 handleInputChangedHeading(event) {
   this.setState({
     page_heading: event.target.value
@@ -105,17 +103,17 @@ render(){
           
             
             <div className="formInput" >
-              <label> page heading</label>
+              <label> Page Heading</label>
                
               <input type="text" name="page_heading" placeholder=" page_heading" onChange={this.handleInputChangedHeading.bind(this)} />
             </div>
             <div className="formInput" >
-              <label>page paragraph</label>
+              <label>Page Paragraph</label>
                
               <input type="text" name="page_paragraph" placeholder=" page_paragraph" onChange={this.handleInputChangedParagraph.bind(this)} />
             </div>
             
-            <button value="button" onClick={this.handleUpload} style={{margin:'auto',height:'50px'}}>Add </button>
+            <button value="button" onClick={this.handleUpload} style={{margin:'auto',height:'50px'}}>Upload </button>
             {handleResponse && <p style={{color: '#0f5132',backgroundColor: '#d1e7dd',borderColor: '#badbcc',borderRadius:'12px',padding:'15px'}} className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
           </form>
         </div>

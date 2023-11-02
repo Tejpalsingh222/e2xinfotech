@@ -15,8 +15,6 @@ class Home_company_history_edit extends Component {
   constructor(props) {
 
 
-
-
     super(props);
 
     this.state = {
@@ -35,8 +33,10 @@ class Home_company_history_edit extends Component {
     fetch(`http://localhost:5000/getcompanydata/${carousel_id}`)
       .then(response => response.json()).then(json => json.data)
       .then(data => {
-        console.log('hooooo',data)
-        this.setState({ books: data });
+        console.log('hii',data)
+        this.setState({ title: data[0].title});
+        this.setState({ description: data[0].description });
+        this.setState({home_couter:data[0].home_couter});
       });
   }
 
@@ -105,8 +105,8 @@ class Home_company_history_edit extends Component {
 
 
 
-    const title = this.props;
-    const { handleResponse, imageUrl } = this.state;
+    const head = this.props;
+    const { handleResponse,title,description ,home_couter} = this.state;
     const chec = this;
     return (
 
@@ -118,13 +118,11 @@ class Home_company_history_edit extends Component {
 
           <div className="top">
 
-            <h1>{title.title}</h1>
+            <h1>{head.title}</h1>
           </div>
-          {this.state.books && this.state.books.map((user, index) => (
+       
             <div className="bottom">
-              <div className="left">
-                <img src={`http://localhost:5000/uploads/${user.carousel_image}`} style={{height:'200px',width:'300px'}}></img>
-              </div>
+            
               <div className="right">
 
                 <form >
@@ -133,25 +131,25 @@ class Home_company_history_edit extends Component {
                   <div className="formInput" >
                     <label>carousel heading</label>
 
-                    <input type="text" key={index} name="title" defaultValue={user.title} placeholder="title" onChange={this.handleInputChangedHeading.bind(this)} />
+                    <input type="text"  name="title" defaultValue={title} placeholder="title" onChange={this.handleInputChangedHeading.bind(this)} />
                   </div>
                   <div className="formInput" >
                     <label>description</label>
 
-                    <input type="text" key={index} name="description" defaultValue={user.description} placeholder="description" onChange={this.handleInputChangedParagraph.bind(this)} />
+                    <input type="text" name="description" defaultValue={description} placeholder="description" onChange={this.handleInputChangedParagraph.bind(this)} />
                   </div>
                   <div className="formInput" >
                     <label>history</label>
 
-                    <input type="text" key={index} name="home_couter" defaultValue={user.home_couter} placeholder="history name" onChange={this.handleInputChangedButton.bind(this)} />
+                    <input type="text" name="home_couter" defaultValue={home_couter} placeholder="history name" onChange={this.handleInputChangedButton.bind(this)} />
                   </div>
-                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>edit </button>
+                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>Edit </button>
                   {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
                 </form>
 
               </div>
             </div>
-          ))}
+      
         </div>
 
       </div>

@@ -12,10 +12,6 @@ class Cardcarousel_edit extends Component {
 
 
   constructor(props) {
-
-
-
-
     super(props);
 
     this.state = {
@@ -29,16 +25,16 @@ class Cardcarousel_edit extends Component {
   }
 
   componentDidMount() {
-    const service_id = window.location.href.split('/')[5]
-    fetch(`http://localhost:5000/edit-CardCarousel/${service_id}`)
+    const carousel_id = window.location.href.split('/')[5]
+    fetch(`http://localhost:5000/edit-CardCarousel/${carousel_id}`)
       .then(response => response.json()).then(json => json.data)
       .then(data => {
-        // console.log('hii',data)
-        this.setState({ service: data });
+        console.log('hii',data[0].title)
+        this.setState({ title: data[0].title });
+        this.setState({ description: data[0].description });
+        this.setState({ selectedFile: data[0].image});
       });
   }
-
-
 
 
   handleInputChangedHeading(event) {
@@ -52,53 +48,38 @@ class Cardcarousel_edit extends Component {
     });
   }
  
-
   onChangeFile = event => {
     this.setState({
       selectedFile: event.target.files[0]
     });
   };
-
-  // handle change event of input file
-
-
-
-
   // handle click event of the upload button
   handleUpload = (e) => {
     const { selectedFile, title, description } = this.state;
-    console.log('selectedFile',selectedFile.name);
     e.preventDefault();
-    if (!selectedFile) {
-      this.setState({
-        handleResponse: {
-          isSuccess: false,
-          message: "Please select image to upload."
-        }
-      });
-      return false;
-    }
+   
 
     const formData = new FormData();
-
-    formData.append('card_image', selectedFile, selectedFile.name);
-    console.log(formData.card_image);
+    console.log("formData======>", formData);
+    if (selectedFile) {
+      if (selectedFile.name) {
+        formData.append('image',selectedFile,selectedFile.name);
+      }    
+    }    
     formData.append('title', title);
     formData.append('description', description);
-
-    const ser_id = window.location.href.split('/')[5]
+    const id = window.location.href.split('/')[5]
     var object = {};
     formData.forEach(function (value, key) {
       object[key] = value;
     });
     var json = JSON.stringify(object);
-    console.log('hububububuuu',formData);
 
     axios({
       method: "post",
-      url: BASE_URL + ser_id,
-      data: {card_image:selectedFile.name,title:title,description:description},
-      headers: { "Content-Type": "application/json" },
+      url: BASE_URL + id,
+      data:  formData,
+
     }).then(response => {
 
       this.setState({
@@ -112,33 +93,23 @@ class Cardcarousel_edit extends Component {
     }).catch(err => {
       alert(err.message);
     });
-
   }
   render() {
-
-
-
-
-    const title = this.props;
-    const { handleResponse, imageUrl } = this.state;
-    const chec = this;
+    const head = this.props;
+    const { handleResponse, selectedFile, title,description } = this.state;
+    console.log('steate',this.state);
+    // const chec = this;
     return (
-
       <div className="new">
         <Sidebar />
-
         <div className="newContainer">
           <Navbar />
-
           <div className="top">
 
-            <h1>{title.title}</h1>
+            <h1>{head.title}</h1>
           </div>
-          {this.state.service && this.state.service.map((user, index) => (
             <div className="bottom">
-              <div className="left">
-                <img src={'http://localhost:5000/uploads/${item.carousel_image}'}></img>
-              </div>
+            
               <div className="right">
 
                 <form >
@@ -146,33 +117,28 @@ class Cardcarousel_edit extends Component {
                     <label htmlFor="file">
                       Image : <DriveFolderUploadOutlined className="icon" />
                     </label>
-                    <input type="file" key={index} onChange={this.onChangeFile} />
+                    <input type="file" onChange={this.onChangeFile} />
                   </div>
 
                   <div className="formInput" >
                     <label>Title</label>
 
-                    <input type="text" key={index} name="title" defaultValue={user.title} placeholder=" title" onChange={this.handleInputChangedHeading.bind(this)} />
+                    <input type="text" name="title" defaultValue={title} placeholder=" title" onChange={this.handleInputChangedHeading.bind(this)} />
                   </div>
                   <div className="formInput" >
-                    <label>Paragraph</label>
+                    <label>Description</label>
 
-                    <input type="text" key={index} name="description" defaultValue={user.description} placeholder=" paragraph" onChange={this.handleInputChangedParagraph.bind(this)} />
+                    <input type="text" name="description" defaultValue={description} placeholder=" paragraph" onChange={this.handleInputChangedParagraph.bind(this)} />
                   </div>
                   
-                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>edit </button>
+                  <button value="button"  onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>edit </button>
                   {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
                 </form>
-
               </div>
             </div>
-          ))}
         </div>
-
       </div>
-
     )
-
   }
 }
 

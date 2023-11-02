@@ -26,7 +26,7 @@ console.log('checktejpal',GetcompHistory);
 
   return (
    
-    <MKBox component="section" py={2}>
+    <MKBox component="section" py={5}>
     
       <Container>
         <Grid container item xs={12} lg={9} sx={{ mx: "auto" }}>
@@ -41,9 +41,7 @@ console.log('checktejpal',GetcompHistory);
           </Grid>
           ))}
         </Grid>
-        
-      </Container>
-       
+      </Container> 
     </MKBox>
   );
 }

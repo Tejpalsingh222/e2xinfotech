@@ -31,27 +31,13 @@ import { Link } from "react-router-dom";
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 const Login = (props) => {
-
-
-
-
-  // const email = useFormInput('');
-  // const password = useFormInput('');
-
   const navigate = useNavigate();
-  // const checkthefile = ()=>{
-  //   alert('teripahlitesting');
-  // }
-  // handle button click of login form
   const handleSubmit = (event) => {
 event.preventDefault();
-// alert(event.currentTarget);
-//     alert('hii')
    const form=new FormData(event.currentTarget);
    const email=form.get('email');
    const password=form.get('password');
     axios.post('http://localhost:5000/login',
-    // response => {
      { email: email, password: password }).then(
       (data) => {
         console.log('data', data.data.data)
@@ -71,79 +57,16 @@ event.preventDefault();
             type: "error",
             text: data.data,
           });
-  
         }
-  
       }).catch(error => { console.log(error) })
     }
-  
-  
-    // const handleFailure = (result)=> {
-    //    alert(result);
-    // }
-  
-    // const handleLogin = (googleData) =>{
-    //   console.log(googleData);
-    // }
     const onSuccess =(res) =>{
       console.log("Login Successs! currunt user:",res.profileObj);
     }
     const onFailure =(res) =>{
       console.log("Login failed! res :", res);
     }
-  
-      
-      
-      // setLoading(false);
-      // setUserSession(response.data.data[0].user_email);
-       
-        
-        // navigate('/dashboard');
-       
-    
-  //   })
-  // }
-
-  // return (
-  //   <div className="main fistclass">
-  //   <div className="sub-main">
-  //     <div>
-  //       <div className="imgs">
-  //         <div className="container-image">
-  //           <img src='assets/img/login_image.jpg' alt="profile" className="profile"/>
-
-  //         </div>
-  //      </div>
-  //       <div>
-  //         <h1>E2x Login Page</h1>
-  //         <div className="first-input">
-  //           <img src='assets/img/user.png' alt="email" className="email"/>
-  //           <input type="text" {...email} autoComplete="new-password" />
-  //         </div>
-  //         <div className="second-input">
-  //           <img  src='assets/img/password.png' alt="pass" className="email"/>
-  //           <input type="password" {...password} autoComplete="new-password" />
-            
-  //         </div>
-  //         {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
-  //        <div className="login-button">
-  //        <button onClick={handlelogin}>Login</button>
-  //        </div>
-          
-  //          <p className="link">
-  //            <a href="#">Forgot password ?</a> Or<a href="#">Sign Up</a>
-  //          </p>
-          
-
-  //       </div>
-  //     </div>
-      
-
-  //   </div>
-  //  </div>
-  // )
-
-  return (
+    return (
     <>
       <MKBox
         position='absolute'
@@ -186,7 +109,7 @@ event.preventDefault();
                   mg='1px'
                   mt={1}
                 >
-                  E2x infotech pvt ltd
+                  E2X INFOTECH PVT LTD
                 </MKTypography>
                 <MKTypography variant='h4' fontWeight='medium' color='white' mt={1}>
                   Sign in

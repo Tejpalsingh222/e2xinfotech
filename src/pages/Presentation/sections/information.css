@@ -1,0 +1,79 @@
+.css-losxtk-MuiGrid-root>.MuiGrid-item {
+    padding-left: 220px;
+}
+
+.css-losxtk-MuiGrid-root>.MuiGrid-item {
+    padding-top: 240px;
+}
+
+.css-1b82nnz {
+    padding-top: 96px;
+    padding-bottom: 96px;
+    padding-left: 40px;
+    padding-right: 24px;
+    text-align: center;
+    line-height: 1;
+    opacity: 1;
+    background: transparent;
+    color: #344767;
+    border-radius: none;
+    box-shadow: none;
+}
+
+
+@media (min-width: 992px)
+{.css-60yt6y-MuiGrid-root {
+    -webkit-flex-basis: 58.333333%;
+    -ms-flex-preferred-size: 58.333333%;
+    flex-basis: 58.333333%;
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    max-width: 58.333333%;}
+}
+
+@media (min-width: 768px)
+{
+.css-60yt6y-MuiGrid-root {
+    -webkit-flex-basis: 25%;
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    max-width: 25%;
+}
+}
+
+@media (min-width: 576px)
+{
+.css-60yt6y-MuiGrid-root {
+    -webkit-flex-basis: 25%;
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    max-width: 25%;
+}
+}
+
+.css-60yt6y-MuiGrid-root {
+    box-sizing: border-box;
+    margin: 0;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-basis: 25%;
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    max-width: 25%;
+    margin-right: auto
+}

@@ -1,0 +1,114 @@
+
+    .datatable {
+        margin-left:230px;
+        height: 600px;
+        padding: 20px;
+        width: calc(100vw - 200px);
+        position:fixed;
+        overflow: scroll;
+    //    background-color:  rgb(36, 154, 201);
+
+    .datatableTitle{
+        width: 100%;
+        font-size: 24px;
+        padding-left: 20px;
+        padding-right: 40px;
+        color: white;
+        background-color: burlywood;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 10px;
+
+        .link{
+            text-decoration: none;
+           color: aliceblue;
+            font-size: 20px;
+            font-weight: 400;
+            border: 2px solid rgb(27, 3, 108);
+            padding: 5px;
+            border-radius: 10px;
+            cursor: pointer;
+
+        }
+    }
+    .css-5oh42b-MuiDataGrid-root .MuiDataGrid-cellContent {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 18px;
+        color:black;
+        font-weight: 400;
+    }
+
+    .cellWithImg{
+        display: flex;
+        align-items: center;
+
+        .cellImg{
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+    }
+
+    .cellWithStatus{
+        padding: 5px;
+        border-radius: 5px;
+
+        &.active {
+            background-color: rgba(0, 128, 0, 0.05);
+            color: green;
+        }
+
+        &.pending {
+            background-color: rgba(255, 217, 0, 0.05);
+            color: goldenrod;
+        }
+
+        &.passive {
+            background-color: rgba(0, 128, 0, 0.05);
+            color: crimson;
+        }
+    }
+
+    .cellAction{
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .viewButton{
+            padding: 2px 5px;
+            border-radius: 5px;
+            color: darkblue;
+            border: 1px dotted rgba(0, 0, 139, 0.596);
+            cursor: pointer;
+        }
+
+        .deleteButton{
+            padding: 2px 5px;
+            border-radius: 10px;
+            font-weight:500;
+            color: black;
+            border: 2px dotted rgba(220, 20, 60, 0.6);
+            cursor: pointer;
+        }
+        .updateButton{
+            padding: 2px 5px;
+            border-radius: 5px;
+            color: rgb(30, 93, 28);
+            border: 1px dotted rgba(220, 20, 60, 0.6);
+            cursor: pointer;
+        }
+        .editButton{
+            padding: 2px 5px;
+            border-radius: 10px;
+            color:black;
+            font-weight: 500;
+            border: 2px dotted rgba(220, 20, 60, 0.6);
+            cursor: pointer;
+        }
+    }
+}

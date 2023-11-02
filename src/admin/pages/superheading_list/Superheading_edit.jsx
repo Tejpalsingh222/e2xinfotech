@@ -137,7 +137,7 @@ class Superheading_edit extends Component {
                  
 
                   <div className="formInput" >
-                    <label>page_heading</label>
+                    <label>Page_heading</label>
 
                     <input type="text" key={index} name="page_heading" defaultValue={user.page_heading} placeholder=" title" onChange={this.handleInputChangedHeading.bind(this)} />
                   </div>
@@ -147,7 +147,7 @@ class Superheading_edit extends Component {
                     <input type="text" key={index} name="page_paragraph" defaultValue={user.page_paragraph} placeholder=" paragraph" onChange={this.handleInputChangedParagraph.bind(this)} />
                   </div>
                   
-                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>edit </button>
+                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>Edit </button>
                   {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
                 </form>
 

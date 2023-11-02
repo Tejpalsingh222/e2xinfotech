@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react';
 export const userColumns = [
-    { field: "id", headerName: "id", width: 70 },
+    // { field: "id", headerName: "id", width: 70 },
     {
         field: "title",
-        headerName: "title",
+        headerName: "Title",
         width: 230,
       },
-    
-    
-    
-  
     {
       field: "description",
-      headerName: "description",
-      width: 100,
+      headerName: "Description",
+      width: 200,
+    },
+
+    {
+      field: "pagelink",
+      headerName: "Page_Link",
+      width: 200,
     },
   
       {
         field: "image",
-        headerName: "image",
+        headerName: "Image",
         width: 230,
         renderCell: (params) => {
           return (
@@ -29,18 +31,6 @@ export const userColumns = [
           );
         },
       },
-    {
-      field: "status",
-      headerName: "Status",
-      width: 160,
-      renderCell: (params) => {
-        return (
-          <div className={`cellWithStatus ${params.row.status}`}>
-            {params.row.status}
-          </div>
-        );
-      },
-    },
   ];
   
   

@@ -1,0 +1,9 @@
+div:where(.swal2-container).swal2-top, div:where(.swal2-container).swal2-center, div:where(.swal2-container).swal2-bottom {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+}
+.css-h469xu {
+    gap: -50px;
+    padding-left: 12px;
+    
+}

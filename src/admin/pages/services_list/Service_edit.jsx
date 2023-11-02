@@ -30,7 +30,7 @@ class Service_edit extends Component {
 
   componentDidMount() {
     const service_id = window.location.href.split('/')[5]
-    fetch(`http://localhost:5000/edit-service-data/${service_id}`)
+    fetch(`http://localhost:5000/edit-blog-data/${service_id}`)
       .then(response => response.json()).then(json => json.data)
       .then(data => {
         // console.log('hii',data)
@@ -135,9 +135,7 @@ class Service_edit extends Component {
           </div>
           {this.state.service && this.state.service.map((user, index) => (
             <div className="bottom">
-              <div className="left">
-                <img src={'http://localhost:5000/uploads/${item.carousel_image}'}></img>
-              </div>
+             
               <div className="right">
 
                 <form >
@@ -149,17 +147,17 @@ class Service_edit extends Component {
                   </div>
 
                   <div className="formInput" >
-                    <label>Service heading</label>
+                    <label>Service Heading</label>
 
                     <input type="text" key={index} name="service_title" defaultValue={user.service_title} placeholder="carousel heading" onChange={this.handleInputChangedHeading.bind(this)} />
                   </div>
                   <div className="formInput" >
-                    <label>Service paragraph</label>
+                    <label>Service Paragraph</label>
 
                     <input type="text" key={index} name="update_service" defaultValue={user.service_para} placeholder="carousel paragraph" onChange={this.handleInputChangedParagraph.bind(this)} />
                   </div>
                   
-                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>edit </button>
+                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>Edit </button>
                   {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
                 </form>
 

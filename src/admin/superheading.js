@@ -1,34 +1,22 @@
 import React, { useEffect, useState } from 'react';
 export const userColumns = [
-    { field: "id", headerName: "id", width: 70 },
+    // { field: "id", headerName: "id", width: 70 },
     {
         field: "page_heading",
-        headerName: "page_heading",
+        headerName: "Page_Heading",
         width: 230,
       },
-    
-    
-    
-  
+   
     {
       field: "page_paragraph",
-      headerName: "page_paragraph",
-      width: 100,
+      headerName: "Page_Paragraph",
+      width: 200,
     },
-  
-     
-      
+
     {
-      field: "status",
-      headerName: "Status",
-      width: 160,
-      renderCell: (params) => {
-        return (
-          <div className={`cellWithStatus ${params.row.status}`}>
-            {params.row.status}
-          </div>
-        );
-      },
+      field: "page_link",
+      headerName: "Page_Link",
+      width: 200,
     },
   ];
   

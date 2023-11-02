@@ -88,7 +88,7 @@ const Pdddata = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Show Pdd fact
+      Card Carousel
         <Link to="/dashboard/home_carousel_client_add" className="link">
           Add New Card Carousel
         </Link>
@@ -100,7 +100,7 @@ const Pdddata = () => {
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
+        // checkboxSelection
       />
     </div>
   );

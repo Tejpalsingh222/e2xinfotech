@@ -1,17 +1,19 @@
 .navbar{
-    height: 50px;
+    height: 60px;
     border-bottom: 0.5px solid rgb(231, 228 , 228);
     display: flex;
     align-items: center;
     font-size: 14px;
+    background-color: rgb(36, 154, 201);
     color: #555;
+    // padding-left: 250px;
 
     .wrapper{
         width: 100%;
         padding: 20px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content:end;
 
         .search {
         display: flex;
@@ -25,6 +27,17 @@
             background-color: transparent;
 
         }
+        }
+        h2{
+            color:white;
+        }
+
+        .Logout{
+            font-size: 16px;
+            font-weight: 400;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
         .items{
@@ -65,5 +78,17 @@
             }
         }
     }
+}
+@media screen and (min-width: 992px){
+    .navbar{
+        height: 60px;
+        border-bottom: 0.5px solid rgb(231, 228 , 228);
+        display: flex;
+        // align-items: center;
+        font-size: 14px;
+        background-color: rgb(36, 154, 201);
+        color: #555;
+    }
+
 }
 
