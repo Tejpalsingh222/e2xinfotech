@@ -64,10 +64,7 @@ function Trip(){
     </div> */}
     <Footer />
               </div>
-        
-       
     )
-  
     ))
 }
 export default Trip;
