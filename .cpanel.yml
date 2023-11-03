@@ -2,5 +2,13 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/t7zdg6h0gw3l/public_html/v2
-    - /bin/cp -R * $DEPLOYPATH
+    - /bin/mkdir $DEPLOYPATH
+    - /bin/cp app.js $DEPLOYPATH
+    - /bin/cp package.json $DEPLOYPATH
+    - /bin/cp script.sh $DEPLOYPATH
+    - /bin/mkdir $DEPLOYPATH/tmp
+    - /bin/touch $DEPLOYPATH/tmp/restart.txt
+    - /bin/chmod +x $DEPLOYPATH/script.sh
+    - cd $DEPLOYPATH
+    - /bin/sh ./script.sh
     
