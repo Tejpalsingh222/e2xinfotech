@@ -166,7 +166,7 @@ class Carousel_edit extends Component {
 
                     <input type="text" key={index} name="carousel_button_name" defaultValue={user.carousel_button_name} placeholder="carousel button name" onChange={this.handleInputChangedButton.bind(this)} />
                   </div>
-                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>edit </button>
+                  <button value="button" onClick={this.handleUpload} style={{ margin: '60px', height: '45px', padding: '5px' }}>edit </button>
                   {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
                 </form>
 

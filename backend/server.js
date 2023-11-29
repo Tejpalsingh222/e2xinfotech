@@ -15,7 +15,7 @@ const pathchekc='http://localhost:5000/uploads/';
 var app = express();
 var port = process.env.PORT || 5000;
 
-  
+
 // enable CORS
 app.use(cors());
 // parse application/json
@@ -932,7 +932,6 @@ var flname = '';
           return res.send({ message: 'File is UPLOAD successfully.', file });
        });
     });
-
     app.post('/add_about_information_data', (req, res, next) => {
   
       const file = req.file;
@@ -1645,8 +1644,6 @@ app.get('/edit_jobs_upload/:id', function(req, res, next) {
     
 
 app.post('/Jobs_upload_update/:ex_id', (req, res, next) => {
-
-
   var id= req.params.ex_id;
   var title= req.body.title;
   var jobtitle=req.body.jobtitle;

@@ -101,8 +101,7 @@ class About_add extends Component {
                 <input type="text" name="title" placeholder="heading" onChange={this.handleInputChangedHeading.bind(this)} />
               </div>
               <div className="formInput" >
-                <label> Paragraph</label>
-                 
+                <label> Paragraph</label> 
                 <input type="text" name="description" placeholder="Description" onChange={this.handleInputChangedParagraph.bind(this)} />
               </div>
               
@@ -113,9 +112,7 @@ class About_add extends Component {
         </div>
         </div>
         </div>
-        
     )
-   
   }
   }
   

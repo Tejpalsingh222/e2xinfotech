@@ -3,6 +3,8 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { DriveFolderUploadOutlined } from "@mui/icons-material";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
 import React, { Component } from 'react';
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -92,17 +94,14 @@ class Home_company_information_edit2 extends Component {
       headers: { "Content-Type": "application/json" },
     }).then(response => {
 
-      this.setState({
-        handleResponse: {
-          isSuccess: response.status === 200,
-          message: response.data.message
-        },
-        imageUrl: BASE_URL + response.data.url
+      toast.success("Update Successfully !", {
+        position: toast.POSITION.TOP_RIGHT,
       });
     }).catch(err => {
-      alert(err.message);
+      toast.error("Error Notification !", {
+        position: toast.POSITION.TOP_CENTER,
+      });
     });
-
   }
   render() {
     const head = this.props;
@@ -131,17 +130,17 @@ class Home_company_information_edit2 extends Component {
                     <input type="text"  name="title" defaultValue={title} placeholder="title" onChange={this.handleInputChangedHeading.bind(this)} />
                   </div>
                   <div className="formInput" >
-                    <label>Description</label>
-
-                    <input type="text" name="description" defaultValue={description} placeholder="description" onChange={this.handleInputChangedParagraph.bind(this)} />
-                  </div>
-                  <div className="formInput" >
                     <label>Icons</label>
 
                     <input type="text"  name="icons" defaultValue={icons} placeholder="icons" onChange={this.handleInputChangedButton.bind(this)} />
                   </div>
-                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>Edit </button>
-                  {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
+                  <div className="formInput" >
+                    <label>Description</label>
+                    <textarea id="w3review"  name="page_link" defaultValue={description} placeholder="history name" onChange={this.handleInputChangedParagraph.bind(this)} rows="4" cols="50"/>
+                    </div>
+                 
+                  <button value="button" onClick={this.handleUpload} style={{ margin: '60px', height: 'auto', padding: '5px' }}>Edit </button>
+                  <ToastContainer />
                 </form>
 
               </div>

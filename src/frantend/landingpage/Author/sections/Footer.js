@@ -83,7 +83,6 @@ function Footer() {
                   href="/pages/landing-pages/main-page"
                   target="_blank"
                   rel="noreferrer"
-                  
                 >
                   Home
                 </MKTypography>
@@ -133,11 +132,11 @@ function Footer() {
             Developed By: E2X INFOTECH Pvt. Ltd 
             </MKTypography>
           </Grid>
-          <Grid item xs={12} lg={6} ml="auto" textAlign={{ xs: "center", lg: "right" }}>
-            <MKTypography variant="body1" fontWeight="bold" mb={6} sx={{ fontSize: "1.125rem" }}>
+          <Grid item xs={12} lg={5} ml="auto" >
+            <MKTypography variant="body1" fontWeight="bold" mb={6}  ml={5} sx={{ fontSize: "1.125rem" }}>
             E2X Infotech is a core technology company. We believe in innovating. We develop all kinds of websites - corporate websites
             </MKTypography>
-            <MKBox  display="flex" justifyContent="center"  alignItems="center">
+            <MKBox  display="flex" >
             {getdata && getdata.map((service)=>(
               <MKTypography component="a" variant="h2" color="blue" href={service.link}  mr={3}  ml={5}>
                 <i className={service.icon} />

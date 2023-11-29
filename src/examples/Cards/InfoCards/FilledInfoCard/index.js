@@ -1,19 +1,4 @@
-/*
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
 
 // react-router-dom components
@@ -71,7 +56,7 @@ function FilledInfoCard({ variant, color, icon, title, description, action }) {
       >
         {typeof icon === "string" ? <Icon>{icon}</Icon> : icon}
       </MKTypography>
-      <MKBox pt={{ xs: 3, md: 0 }} pl={{ xs: 0, md: 2 }} lineHeight={1}>
+      <MKBox pt={{ xs: 3, md: 0 }} style={{ textOverflow: "ellipsis", overflow: "hidden" }} pl={{ xs: 0, md: 2 }} lineHeight={1}>
         <MKTypography
           display="block"
           variant="5"

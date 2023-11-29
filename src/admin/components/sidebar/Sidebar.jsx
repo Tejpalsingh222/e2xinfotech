@@ -26,10 +26,7 @@ const Sidebar = (props) => {
 
   const {dispatch} = useContext(DarkModeContext)
   const navigate = useNavigate();
-  const handleLogout = () => {  
-
-
-    
+  const handleLogout = () => {      
     removeUserSession();
     navigate('/dashboard/login');
   }
@@ -98,14 +95,11 @@ const Sidebar = (props) => {
            <List className="icon" />
            <span >Company_Profile</span> </li>
            </Link> 
-           
-
-
             {/* service route */}
             <p className="title">SERVICES SETTING</p>
             <Link to="/dashboard/home_service_data_list" style={{textDecoration: "none"}}>
             <li>
-              <CleaningServices className="icon" />
+              <List className="icon" />
             <span>Service List</span>
             </li>
             <Link to="/dashboard/home_expertise_list" style={{textDecoration: "none"}}>
@@ -185,11 +179,11 @@ const Sidebar = (props) => {
             <span>Main Editor</span>
             </li>
             </Link> */}
-            <p className="title">USER</p>  
+            {/* <p className="title">USER</p>  
             <li>
               <InputOutlinedIcon className="icon" />
             <span onClick={handleLogout}>Logout</span>
-            </li>
+            </li> */}
             <Link/>
         </ul>
     </div>

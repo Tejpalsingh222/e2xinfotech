@@ -37,8 +37,8 @@ useEffect(()=>{
           justifyContent="center"
           sx={{ mx: "auto", textAlign: "center" }}
         >
-          <MKTypography variant="h3">{serviceheading.page_heading}</MKTypography>
-          <MKTypography variant="h5" color="info" textGradient mb={3}>
+          <MKTypography variant="h3" style={{ textOverflow: "ellipsis", overflow: "hidden" }} >{serviceheading.page_heading}</MKTypography>
+          <MKTypography variant="h5"  style={{ textOverflow: "ellipsis", overflow: "hidden" }} color="info"  textGradient mb={3}>
           {serviceheading.page_paragraph}
           </MKTypography>
         </Grid>

@@ -3,6 +3,7 @@ import { CircularProgress } from "@mui/material";
 import axios from "axios";
 import Swal from "sweetalert2";
 // Material Kit 2 React components
+
 import MKBox from "components/MKBox";
 import MKInput from "components/MKInput";
 import MKButton from "components/MKButton";
@@ -86,14 +87,14 @@ function MKmsg() {
             height="calc(85vh - 2.5rem)"
             borderRadius="lg"
             ml={11}
-          
             sx={{ backgroundImage: `url(${bgImage})`, backgroundRepeat: "no-repeat", }}
+            
           />
         </Grid>
         <Grid
           item
           mt={2.5}
-          xs={10}
+          xs={8}
           sm={10}
           md={8}
           lg={6}
@@ -131,11 +132,13 @@ function MKmsg() {
               <MKTypography variant="body2" color="text" mb={3}>
                 For  any type of further questions, including partnership opportunities.
               </MKTypography>
-              
               <MKBox onSubmit={handleSubmit}  width="100%"  component="form" method="post" autoComplete="off">
                 <Grid container spacing={3}>
                   <Grid item xs={12} md={6}>
                     <MKInput
+                     inputProps={{
+                      maxlength: 20
+                       }}
                       name="Full_Name"
                       variant="standard"
                       label="Full Name"
@@ -149,6 +152,9 @@ function MKmsg() {
                   </Grid>
                   <Grid item xs={12} md={6}>
                     <MKInput
+                     inputProps={{
+                      maxlength: 35
+                       }}
                       name="Your_Email"
                       type="email"
                       variant="standard"
@@ -163,6 +169,9 @@ function MKmsg() {
                   </Grid>
                   <Grid item xs={12}>
                     <MKInput
+                     inputProps={{
+                      maxlength: 20
+                       }}
                       name="Subject"
                       variant="standard"
                       label="subject"
@@ -205,7 +214,6 @@ function MKmsg() {
         </Grid>
       </Grid>
     </>
-  
   );
 }
 export default MKmsg;

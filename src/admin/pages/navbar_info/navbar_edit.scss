@@ -62,14 +62,14 @@
                         }
                     }
                 button{
-                    width: 150px;
+                    width: auto;
                     padding: 10px;
+                    border-radius: 20%;
                     border: none;
-                    background-color: teal;
+                    
+                    background-color:  rgb(36, 154, 201);
                     color: white;
-                    font-weight: bold;
                     cursor: pointer;
-                    margin-top: 10px;
                 }
                 }
              }

@@ -3,7 +3,6 @@
 // import Mountain3 from "../images/n4.jpg"
 import { Component } from "react";
 import "./Event.css";
-
 class DestinationData extends Component{
     render(){
         return(

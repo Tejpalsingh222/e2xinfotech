@@ -10,15 +10,6 @@ import Author from "frantend/landingpage/Author/index";
 import Career from "frantend/landingpage/Career/index";
 
 
-  const fetchUserData = () => {
-    fetch("http://localhost:5000/get_navbar/")
-      .then(response => response.json()).then(json => json.data)
-      .then(data => {
-        console.log('dineidnieindineidnienidninidniewid',data);
-      })
-  }
-  fetchUserData();
-
 const routes =
    [
   {

@@ -10,8 +10,7 @@ const BASE_URL = 'http://localhost:5000/add_home_header_data/';
 class Home_page_header extends Component {
 constructor(props) {
   
-  super(props);
-  
+  super(props);  
   this.state = {
     selectedFile: null, // to store selected file
     handleResponse: null, // handle the API response
@@ -39,10 +38,6 @@ onChangeFile = event => {
      selectedFile: event.target.files[0]
   });
 };
-
-// handle change event of input file
-
-
 
 
 // handle click event of the upload button
@@ -84,7 +79,6 @@ render(){
   const { handleResponse, imageUrl } = this.state;
   const chec=this;
   return (
-  
     <div className="new">
       <Sidebar/>
   
@@ -115,16 +109,14 @@ render(){
               <input type="text" name="description" placeholder="description" onChange={this.handleInputChangedParagraph.bind(this)} />
             </div>
             
-            <button value="button" onClick={this.handleUpload} style={{margin:'auto',height:'50px'}}>Upload </button>
+            <button value="button" onClick={this.handleUpload} style={{margin:'15px',height:'50px'}}>Upload </button>
             {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
           </form>
         </div>
       </div>
       </div>
       </div>
-      
   )
- 
 }
 }
 

@@ -1,0 +1,27 @@
+#clients .owl-carousel {
+    display: flex;
+    padding: 70px;
+    position: relative;
+    /* margin-top: -70px; */
+    padding: 80px;
+    gap: 55px;
+}
+/* .owl-carousel {
+    display: flex;
+    margin-top: -70px;
+    padding: 80px;
+    gap: 55px;
+} */
+/* .owl-stage{
+    transform: translate3d(-1456px,0px,0px);
+    transition:all 0.25s ease 0s;
+    width: 3328px;
+}
+
+.owl-item cloned{
+ width: auto;
+ margin-right: 70px;
+} */
+
+
+

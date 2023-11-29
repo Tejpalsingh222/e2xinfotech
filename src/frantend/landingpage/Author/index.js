@@ -1,7 +1,11 @@
 import Card from "@mui/material/Card";
 
+
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
+ 
+
+// import Carousel from 'react-multi-carousel';
 
 // Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
@@ -10,15 +14,22 @@ import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import Profile from "frantend/landingpage/Author/sections/Profile";
 import Posts from "frantend/landingpage/Author/sections/Posts";
 
-import Trip from "frantend/landingpage/Author/sections/Feedsection"
+// import Trip from "frantend/landingpage/Author/sections/Feedsection"
 // import Contact from "pages/LandingPages/Author/sections/Contact";
 import Footer from "frantend/landingpage/Author/sections/Footer";
 
 // Routes
 import routes from "routes";
 
+import "./indexx.css"
+
 // Images
 import bgImage from "assets/images/banner2.jpg";
+
+import img1 from "assets/images/1.jpg";
+import img2 from "assets/images/2.jpg";
+import img3 from "assets/images/3.jpg";
+import img4 from "assets/images/4.jpg";
 
 function Author() {
   document.title ="E2X INFOTECH || BLOG PAGE"
@@ -42,10 +53,8 @@ function Author() {
             backgroundPosition: "center",
             display: "grid",
             placeItems: "center",
-            
           }}
-          
-        />
+          />
         <Card
           sx={{
             p: 2,
@@ -59,9 +68,55 @@ function Author() {
         >
           <Profile />
           <Posts />
+          {/* <!-- start clients section--> */}
+ {/* <section id="clients">
+    <div className="container1">
+        <div className="row">
+            <div className="col-lg-12">
+                <div className="owl-carousel ">
+                     <div className="item">
+                        <div className="client-img-holder">
+                            <img src={img2} alt="client"/>
+                        </div>
+                    </div>
+
+                    <div className="item"> 
+                        <div className="client-img-holder">
+                            <img src={img3} alt="client"/>
+                        </div>
+                    </div>
+
+                    <div className="item">
+                        <div className="client-img-holder">
+                            <img src={img4} alt="client"/>
+                        </div>
+                    </div>
+
+                    <div className="item">
+                        <div className="client-img-holder">
+                            <img src={img1} alt="client"/>
+                        </div>
+                    </div>
+                      
+                    <div className="item">
+                        <div className="client-img-holder">
+                            <img src={img3} alt="client"/>
+                        </div>
+                    </div>
+
+                    <div className="item">
+                        <div className="client-img-holder">
+                            <img src={img1} alt="client"/> 
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End clients section--> */}
         </Card>
         {/* <Trip/> */}
-        
         {/* <Contact /> */}
         <Footer />
       </MKBox>

@@ -6,9 +6,7 @@ import MKInput from 'components/MKInput'
 import Container from "@mui/material/Container";
 import MKButton from 'components/MKButton'
 import MKTypography from 'components/MKTypography'
-
 import validator from 'validator'
-
 import './contact.css'
 
 // Material Kit 2 React examples
@@ -31,6 +29,7 @@ import bgImage from 'assets/images/pl.webp'
 
 function ContactUs () {
   const [getdata, setData] = useState('')
+  const CHARACTER_LIMIT = 20;
   const fetchUserData = () => {
     fetch('http://localhost:5000/get_social_media/')
       .then(response => response.json())
@@ -181,6 +180,9 @@ function ContactUs () {
                 <Grid container spacing={3}>
                   <Grid item xs={12} md={6}>
                     <MKInput
+                     inputProps={{
+                      maxlength: 20
+                       }}
                       name='Full_Name'
                       variant='standard'
                       label='Full Name'
@@ -200,6 +202,9 @@ function ContactUs () {
                     <MKInput
                       name='Your_Email'
                       type='email'
+                      inputProps={{
+                        maxlength: 50
+                         }}
                       variant='standard'
                       label='Email'
                       InputLabelProps={{ shrink: true }}
@@ -219,6 +224,9 @@ function ContactUs () {
                       name='Subject'
                       variant='standard'
                       label='Subject'
+                      inputProps={{
+                      maxlength: 30
+                       }}
                       placeholder='Your Subject'
                       InputLabelProps={{ shrink: true }}
                       multiline
@@ -306,8 +314,7 @@ function ContactUs () {
        {/* </Grid> */}
        </Container>
       </Grid>
-     
-<MKBox pt={6} px={1} mt={-7}>
+      <MKBox pt={6} px={1} mt={-7}>
         <Footer />
       </MKBox>
       

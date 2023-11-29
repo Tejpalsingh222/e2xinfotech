@@ -87,7 +87,7 @@ useEffect(()=>{
 
                     <div className='tt-contact-info'>
                       <div className='simple-text'>
-                        <p style={{ paddingTop: '0px' }}>
+                        <p style={{paddingTop: '10px'}}>
                           {contactinfo.content}
                         </p>
                       </div>
@@ -112,14 +112,13 @@ useEffect(()=>{
 
                     <div className='tt-contact-info'>
                       <div className='simple-text'>
-                        <p style={{ paddingTop: '0px' }}>
+                        <p style={{ paddingTop: '10px' }}>
                           {contactinfo1.content}
                         </p>
                       </div>
                     </div>
                   </div>
                 ))}
-
               <iframe
                 src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.4064574096788!2d77.39873506500594!3d28.497416432471315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce860bfea95d9%3A0x683ddf48f263ecc!2sAssotech%20Business%20Cresterra!5e0!3m2!1sen!2sin!4v1679506369030!5m2!1sen!2sin'
                 style={{ border: '0', width: '350', height: '150' }}

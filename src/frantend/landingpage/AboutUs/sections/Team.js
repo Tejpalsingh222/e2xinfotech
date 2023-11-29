@@ -85,35 +85,32 @@ const responsive = {
       <Container>
         <Grid container>
           <Grid item xs={12} md={8} sx={{ mb: 6 }}>
-            <MKTypography variant="h3" color="white">
+            <MKTypography variant="h3" style={{ textOverflow: "ellipsis", overflow: "hidden" }} color="white">
             {serviceheading.page_heading}
             </MKTypography>
-            <MKTypography variant="body2" color="white" opacity={0.8}>
+            <MKTypography variant="body2" style={{ textOverflow: "ellipsis", overflow: "hidden" }} color="white" opacity={0.8}>
             {serviceheading.page_paragraph}
             </MKTypography>
           </Grid>
         </Grid>
-        
         <Carousel showDots={true} responsive={responsive} itemAriaLabel='dineideindie'>
         {getdata && getdata.map(user => (
             <Grid container spacing={3}>
-          <Grid item xs={12} lg={15}>
-            <MKBox mb={1}>
+          <Grid item xs={12} lg={15} m={1} style={{ textOverflow: "ellipsis", overflow: "hidden" }}>
+            <MKBox mb={1} >
               <HorizontalTeamCard
                 image={img + user.team_image}
                 name={user.excutive_title}
-                position={{ color: "info", label:`${user.team_position}` }}
+                position={{ color: "info", label:`${user.team_position}`}}
                 description={user.excutive_intro}
               />
             </MKBox>
           </Grid>
         </Grid>
-
-          ))}
+        ))}
             </Carousel>
       </Container>
     </MKBox>
   );
 }
-
 export default Team;

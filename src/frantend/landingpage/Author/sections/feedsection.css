@@ -67,7 +67,8 @@
 }
 
 .t-image img{
-   margin-left: 20px;
+   padding-top: 15px;
+   margin-left: 13px;
    width: 90%;
    height: 100%;
    transition: 0.3s ease-in-out;

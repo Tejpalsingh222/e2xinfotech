@@ -1,6 +1,8 @@
 import "./media_edit.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { DriveFolderUploadOutlined } from "@mui/icons-material";
 import { useState } from "react";
 import axios from 'axios';
@@ -77,19 +79,14 @@ class media_edit extends Component {
       data: formData,
       headers: { "Content-Type": "application/json" },
     }).then(response => {
-
-      this.setState({
-
-        handleResponse: {
-          isSuccess: response.status === 200,
-          message: response.data.message
-        },
-        imageUrl: BASE_URL + response.data.url
+      toast.success("Update Successfully !", {
+        position: toast.POSITION.TOP_RIGHT,
       });
     }).catch(err => {
-      alert(err.message);
+      toast.error("Error Notification !", {
+        position: toast.POSITION.TOP_CENTER,
+      });
     });
-
   }
   render() {
     const title = this.props;
@@ -119,9 +116,9 @@ class media_edit extends Component {
                     <input type="text" name="icon" defaultValue={icon} placeholder="icon" onChange={this.handleInputChangedParagraph.bind(this)} />
                   </div>
                   
-                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>Edit </button>
-                  {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
-                </form>
+                  <button value="button" onClick={this.handleUpload} style={{ margin: '25px', height: 'auto', padding: '5px' }}>Edit </button>
+                  <ToastContainer />
+                   </form>
 
               </div>
             </div>

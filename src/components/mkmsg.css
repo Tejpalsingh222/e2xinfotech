@@ -4,3 +4,17 @@ div:where(.swal2-container).swal2-top, div:where(.swal2-container).swal2-center,
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
 }
+
+@media (min-width: 1366px)
+{
+.css-p52flw {
+    display: flex;
+}
+}
+
+@media (min-width: 0px)
+{
+.css-p52flw {
+    display: none;
+}
+}

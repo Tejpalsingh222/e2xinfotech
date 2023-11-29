@@ -4,6 +4,8 @@ import Navbar from "../../components/navbar/Navbar";
 import { DriveFolderUploadOutlined } from "@mui/icons-material";
 import { useState } from "react";
 import axios from 'axios';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React, { Component } from 'react';
 import { Link, useNavigate, useParams } from "react-router-dom";
 const BASE_URL = 'http://localhost:5000/update_about/';
@@ -82,18 +84,14 @@ class About_edit extends Component {
     
     }).then(response => {
 
-      this.setState({
-
-        handleResponse: {
-          isSuccess: response.status === 200,
-          message: response.data.message
-        },
-        imageUrl: BASE_URL + response.data.url
+      toast.success("Update Successfully !", {
+        position: toast.POSITION.TOP_RIGHT,
       });
     }).catch(err => {
-      alert(err.message);
+      toast.error("Error Notification !", {
+        position: toast.POSITION.TOP_CENTER,
+      });
     });
-
   }
   render() {
 
@@ -130,15 +128,15 @@ class About_edit extends Component {
 
                     <input type="text" name="title" defaultValue={title} placeholder="heading" onChange={this.handleInputChangedHeading.bind(this)} />
                   </div>
-                  <div className="formInput" >
-                    <label>Paragraph</label>
 
-                    <input type="text" name="description" defaultValue={description} placeholder=" Paragraph" onChange={this.handleInputChangedParagraph.bind(this)} />
-                  </div>
+                  <div className="formInput" >
+                    <label>Description</label>
+                    <textarea id="w3review"  name="page_link" defaultValue={description} placeholder="history name" onChange={this.handleInputChangedParagraph.bind(this)} rows="4" cols="50"/>
+                    </div>
                   
-                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>Edit </button>
-                  {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
-                </form>
+                  <button value="button" onClick={this.handleUpload} style={{ margin: '60px', height: '45px', padding: '5px' }}>Edit </button>
+                  <ToastContainer />
+                    </form>
 
               </div>
             </div>

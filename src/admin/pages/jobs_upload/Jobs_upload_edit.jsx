@@ -3,6 +3,8 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { DriveFolderUploadOutlined } from "@mui/icons-material";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
 import React, { Component } from 'react';
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -157,17 +159,14 @@ handleInputChangedjobDate(event) {
       headers: { "Content-Type": "application/json" },
     }).then(response => {
 
-      this.setState({
-        handleResponse: {
-          isSuccess: response.status === 200,
-          message: response.data.message
-        },
-        imageUrl: BASE_URL + response.data.url
+      toast.success("Update Successfully !", {
+        position: toast.POSITION.TOP_RIGHT,
       });
     }).catch(err => {
-      alert(err.message);
+      toast.error("Error Notification !", {
+        position: toast.POSITION.TOP_CENTER,
+      });
     });
-
   }
   render() {
     const head = this.props;
@@ -216,45 +215,45 @@ handleInputChangedjobDate(event) {
                   <div className="formInput" >
                     <label>Heading</label>
 
-                    <input type="text"  name="about_company" defaultValue={about_company} placeholder="title" onChange={this.handleInputChangedHeading.bind(this)} />
+                    <textarea id="w3review"  name="page_link"  defaultValue={about_company} placeholder="title" onChange={this.handleInputChangedHeading.bind(this)}  rows="4" cols="50" />
                   </div>
                   <div className="formInput" >
                     <label>Description</label>
-
-                    <input type="text" name="job_description" defaultValue={job_description} placeholder="description" onChange={this.handleInputChangedParagraph.bind(this)} />
-                  </div>
-                  <div className="formInput" >
-                    <label>Positions</label>
-
-                    <input type="text"  name="open_positions" defaultValue={open_positions} placeholder="icons" onChange={this.handleInputChangedButton.bind(this)} />
+                    <textarea id="w3review"  name="page_link" defaultValue={job_description} placeholder="history name" onChange={this.handleInputChangedParagraph.bind(this)} rows="4" cols="50"/>
                   </div>
 
                   <div className="formInput" >
               <label>Skills</label>
                
-              <input type="text" name="skills_required" defaultValue={skills_required} placeholder="skills_required" onChange={this.handleInputChangedSkills.bind(this)} />
+              <textarea id="w3review"  name="page_link" defaultValue={skills_required} placeholder="skills_required" onChange={this.handleInputChangedSkills.bind(this)} rows="4" cols="50"/>
             </div>
             
             
             
             <div className="formInput" >
               <label>Education</label>
-              <input type="text" name="education" defaultValue={education} placeholder="education" onChange={this.handleInputChangededucation.bind(this)} />
+              <textarea id="w3review"  name="page_link" defaultValue={education} placeholder="education" onChange={this.handleInputChangededucation.bind(this)} rows="4" cols="50" />
             </div> 
             
             <div className="formInput" >
               <label>Desirable Skills</label>
-                <input type="text" name="desirable_skills" defaultValue={desirable_skills} placeholder="desirable_skills" onChange={this.handleInputChangeddesirableskills.bind(this)} />
+                 <textarea id="w3review"  name="page_link" defaultValue={desirable_skills} placeholder="desirable_skills" onChange={this.handleInputChangeddesirableskills.bind(this)}  rows="4" cols="50" />
             </div>
+
+             <div className="formInput" >
+                    <label>Positions</label>
+
+                    <input type="text"  name="open_positions" defaultValue={open_positions} placeholder="icons" onChange={this.handleInputChangedButton.bind(this)} />
+                  </div>
 
             <div className="formInput" >
               <label>Experience</label>
-                <input type="text" name="experience" defaultValue={experience} placeholder="experience" onChange={this.handleInputChangedExperience.bind(this)} />
+             <input type="text" name="Experience"  defaultValue={experience} placeholder="experience" onChange={this.handleInputChangedExperience.bind(this)} />
             </div>
             
-                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>Edit </button>
-                  {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
-                </form>
+            <button value="button" onClick={this.handleUpload} > Edit </button>
+                  <ToastContainer />
+                    </form>
 
               </div>
             </div>

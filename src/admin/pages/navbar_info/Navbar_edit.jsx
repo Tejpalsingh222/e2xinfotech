@@ -21,8 +21,6 @@ class Navbar_edit extends Component {
       page_name: null,
       routes: null,
       page_link:null,
-     
-
     };
   }
 
@@ -37,9 +35,6 @@ class Navbar_edit extends Component {
         this.setState({page_link:data[0].page_link});
       });
   }
-
-
-
 
   handleInputChangedHeading(event) {
     this.setState({
@@ -138,8 +133,7 @@ class Navbar_edit extends Component {
                   </div>
                   <div className="formInput" >
                     <label>Link</label>
-
-                    <input type="text" name="page_link" defaultValue={page_link} placeholder="history name" onChange={this.handleInputChangedButton.bind(this)} />
+                    <textarea id="w3review"  name="page_link" defaultValue={page_link} placeholder="history name" onChange={this.handleInputChangedButton.bind(this)} rows="4" cols="50"/>
                   </div>
                   <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>Edit </button>
                   {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}

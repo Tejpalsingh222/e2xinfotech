@@ -44,8 +44,6 @@ function AboutUs(props) {
   useEffect(() => {
     fetchdatawithapi()
   }, [])
-
-
   return (
     <>
       <DefaultNavbar
@@ -79,6 +77,7 @@ function AboutUs(props) {
           <Grid
             container
             item
+            style={{ textOverflow: "ellipsis", whiteSpace: 'pre-wrap', overflowWrap: 'break-word' }}
             xs={12}
             lg={8}
             mt={5}
@@ -88,6 +87,7 @@ function AboutUs(props) {
             sx={{ mx: "auto", textAlign: "center" }}
           >
             <MKTypography
+            style={{ textOverflow: "ellipsis", whiteSpace: 'pre-wrap', overflowWrap: 'break-word' }}
               variant="h2"
               color="white"
               backgroundColor='text.disabled'

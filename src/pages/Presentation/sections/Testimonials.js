@@ -40,8 +40,8 @@ useEffect(()=>{
           justifyContent="center"
           sx={{ mx: "auto", textAlign: "center" }}
           >
-          <MKTypography variant="h2">{serviceheading.page_heading}</MKTypography>
-          <MKTypography variant="h2" color="info" textGradient mb={2}>
+          <MKTypography style={{ textOverflow: "ellipsis", overflow: "hidden" }} variant="h2">{serviceheading.page_heading}</MKTypography>
+          <MKTypography style={{ textOverflow: "ellipsis", overflow: "hidden" }} variant="h2" color="info" textGradient mb={2}>
           {serviceheading.page_paragraph}
           </MKTypography>
           {/* <MKTypography variant="body1" color="text" mb={2}>

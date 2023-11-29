@@ -6,10 +6,6 @@ export const userColumns = [
         headerName: "Service_title",
         width: 230,
       },
-    
-    
-    
-  
     {
       field: "service_para",
       headerName: "Service_para",

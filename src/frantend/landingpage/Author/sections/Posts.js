@@ -4,17 +4,15 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 
 // Material Kit 2 React components
+
+
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
-
-
-
 
 // Material Kit 2 React components
 import TransparentBlogCard from "examples/Cards/BlogCards/TransparentBlogCard";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-
 import "./posts.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react'
@@ -65,7 +63,7 @@ function Places() {
             Check Our activity or events.
           </MKTypography>
        </Grid>
-      <Carousel showDots={true} responsive={responsive} itemAriaLabel='dineideindie'>
+      <Carousel  showDots={true} responsive={responsive} itemAriaLabel='dineideindie'>
         {getdata && getdata.map(user => (
            <Grid container spacing={3}>
            <Grid item xs={12} sm={5} lg={10} pl={16} >
@@ -73,18 +71,15 @@ function Places() {
               image={img + user.blog_image}
               title={<h3><Link to={routeurl+user.id}>{user.blog_title}</Link></h3>}
               // description={user.blog_para}
-              action='false'
+              
+              action='false'  
             />
-        
             </Grid>
             </Grid>
-          ))}  
-          
+          ))} 
 </Carousel>
 </Container>
-
-
-     </MKBox>  
+ </MKBox>  
          </div>
   );
 }

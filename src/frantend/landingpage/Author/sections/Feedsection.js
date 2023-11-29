@@ -65,6 +65,7 @@ function Trip(){
     <Footer />
               </div>
     )
+  
     ))
 }
 export default Trip;

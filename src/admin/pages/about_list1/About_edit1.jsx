@@ -3,6 +3,8 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { DriveFolderUploadOutlined } from "@mui/icons-material";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
 import React, { Component } from 'react';
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -82,18 +84,14 @@ class About_edit1 extends Component {
     
     }).then(response => {
 
-      this.setState({
-
-        handleResponse: {
-          isSuccess: response.status === 200,
-          message: response.data.message
-        },
-        imageUrl: BASE_URL + response.data.url
+      toast.success("Update Successfully !", {
+        position: toast.POSITION.TOP_RIGHT,
       });
     }).catch(err => {
-      alert(err.message);
+      toast.error("Error Notification !", {
+        position: toast.POSITION.TOP_CENTER,
+      });
     });
-
   }
   render() {
 
@@ -131,13 +129,11 @@ class About_edit1 extends Component {
                     <input type="text" name="title" defaultValue={title} placeholder="heading" onChange={this.handleInputChangedHeading.bind(this)} />
                   </div>
                   <div className="formInput" >
-                    <label>Paragraph</label>
-
-                    <input type="text" name="description" defaultValue={description} placeholder=" Paragraph" onChange={this.handleInputChangedParagraph.bind(this)} />
-                  </div>
-                  
-                  <button value="button" onClick={this.handleUpload} style={{ margin: 'auto', height: '45px', padding: '5px' }}>Edit </button>
-                  {handleResponse && <p className={handleResponse.isSuccess ? "success" : "error"}>{handleResponse.message}</p>}
+                    <label>Description</label>
+                    <textarea id="w3review"  name="page_link" defaultValue={description} placeholder="history name" onChange={this.handleInputChangedParagraph.bind(this)} rows="4" cols="50"/>
+                    </div>
+                  <button value="button" onClick={this.handleUpload} style={{ margin: '60px', height: 'auto', padding: '5px' }}>Edit </button>
+                  <ToastContainer />
                 </form>
 
               </div>
@@ -153,3 +149,5 @@ class About_edit1 extends Component {
 }
 
 export default About_edit1;
+
+

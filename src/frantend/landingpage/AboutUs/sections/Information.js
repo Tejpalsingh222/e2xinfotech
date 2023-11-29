@@ -78,8 +78,8 @@ useEffect(()=>{
     <>
     <MKBox component='section' py={12}>
       <Container>
-        <MKTypography variant='h3'>{serviceheading.page_heading}</MKTypography>
-        <MKTypography variant='h6'>
+        <MKTypography style={{ textOverflow: "ellipsis", overflow: "hidden" }} variant='h3'>{serviceheading.page_heading}</MKTypography>
+        <MKTypography style={{ textOverflow: "ellipsis", overflow: "hidden" }} variant='h6'>
         {serviceheading.page_paragraph}
         </MKTypography>
        <Grid container spacing={10} alignItems='center'>
@@ -98,7 +98,7 @@ useEffect(()=>{
                ))}
             </Grid>
           </Grid>
-          <Grid item xs={-50} lg={6} sx={{ ml: "15",mt: { xs:3,}}}>
+          <Grid item xs={12} lg={6} sx={{ ml:"auto",mt: { xs:3}}}>
             {getdata1 && getdata1.map(user => (
             <CenteredBlogCard
               image={img + user.image}
@@ -106,10 +106,9 @@ useEffect(()=>{
               description= {user.description}
               action='false'
             />
-       
             ))}
           </Grid>
-         <Grid item xs={-50} lg={6} sx={{ ml: "auto" ,mt: { xs: 5,}}}>
+         <Grid item xs={12} lg={6} sx={{ ml:"auto" ,mt: { xs: 5,}}}>
          {getdata2 && getdata2.map(user => (
             <CenteredBlogCard
               image={img + user.image}

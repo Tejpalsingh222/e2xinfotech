@@ -51,12 +51,14 @@ function Home (props) {
     document.title ="E2X INFOTECH || HOME PAGE"
  
   const fetchdatawithapi = () => {
-    fetch(`http://localhost:5000/get_home_page_config/${props.title}`)
+    fetch(`http://localhost/octo_web_api/e2xweb/carouselDetails.php?route=home_page_config&page_id=${props.title}`)
       .then(response => {
         return response.json()
       })
       .then(data => {
-        setData(data.data)
+        console.log('url',`http://localhost/octo_web_api/e2xweb/carouselDetails.php?route=home_page_config&page_id=${props.title}`)
+        // console.log('ha de de bhai ',data)
+        setData(data)
       })
   }
   useEffect(() => {
@@ -127,11 +129,12 @@ function Home (props) {
                 mx='auto'
               >
                 <MKTypography
+                  overflowWrap= "break-word"
                   variant='h2'
                   color='white'
                   backgroundColor='text.disabled'
                   mt={-6}
-                  mb={1}
+                  // mb={1}
                   sx={({ breakpoints, typography: { size } }) => ({
                     [breakpoints.down('md')]: {
                       fontSize: size['3xl']
@@ -141,6 +144,7 @@ function Home (props) {
                   {user.title}
                 </MKTypography>
                 <MKTypography
+                 overflowWrap= "break-word"
                   variant='h4'
                   color='white'
                   backgroundColor='text.disabled'
@@ -165,6 +169,7 @@ function Home (props) {
           backdropFilter: 'saturate(200%) blur(30px)',
           boxShadow: ({ boxShadows: { xxl } }) => xxl
         }}
+    
       >
         <Counters />
         <Information />
@@ -181,7 +186,7 @@ function Home (props) {
         <Container>
         <Carousel responsive={responsive} itemAriaLabel='dineideindie'>
             {getdata1 && getdata1.map(user => (
-                <Grid container spacing={1}>
+                <Grid container spacing={1}  >
                 <Grid item xs={12} lg={11.5}>
                   <FilledInfoCard
                     variant='gradient'
@@ -195,9 +200,7 @@ function Home (props) {
               ))}
           </Carousel>
         </Container>
-      
       </Card>
-      
       <MKBox pt={6} px={1} mt={-10}>
         <Footer />
       </MKBox>
